@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.Assertions;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody))]
 public class CanMove : DisbaledOnDeath
 {
     [Header("Speed")]
@@ -19,7 +19,7 @@ public class CanMove : DisbaledOnDeath
     private float nextWalkEventTime = 0.0f;
     
     public Vector3 direction;
-    protected Rigidbody2D rb;
+    protected Rigidbody rb;
     Animator animator;
     bool isUsingNavAgent = false;
 
@@ -37,13 +37,13 @@ public class CanMove : DisbaledOnDeath
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         Assert.IsNotNull(rb);
     }
 
     void Update()
     {
-        animator.SetBool("Run", IsMoving);
+        animator?.SetBool("Run", IsMoving);
 
         if (isMoving && (Time.time > nextWalkEventTime)) {
             walkEvent?.Invoke();
@@ -57,7 +57,8 @@ public class CanMove : DisbaledOnDeath
 
         if (!isEnabled) {
             //Stop current movement
-            moveTo(transform.position);
+            //moveTo(transform.position);
+            moveToward(Vector3.zero);
         }
     }
 

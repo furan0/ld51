@@ -16,3 +16,8 @@ MonoBehaviour:
   - alias: BUTTON_OK
     clips:
     - {fileID: 8300000, guid: 48fda05a4fa4b2a46971af1725521c41, type: 3}
+  - alias: WALK
+    clips:
+    - {fileID: 8300000, guid: 580bbe7244f05294fbca8c8c13dfd470, type: 3}
+    - {fileID: 8300000, guid: 2327e4387a488d64d8e3b2d047a66f37, type: 3}
+    - {fileID: 8300000, guid: 6775ac96a4933134ab6300afb1c41d4a, type: 3}

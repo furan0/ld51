@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   musicVolume: 1
-  soundVolume: 1
+  soundVolume: 0.294

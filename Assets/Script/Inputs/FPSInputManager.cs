@@ -4,16 +4,9 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
 {
-    [SerializeField]
-    private bool _isUsingGamepad = false;
-    public bool isUsingGamepad {
-        get { return _isUsingGamepad; }
-    }
-
     private MainManager manager;
-    public bool enableInput = true;
 
     // Start is called before the first frame update
     void Awake()
@@ -22,13 +15,9 @@ public class InputManager : MonoBehaviour
         Assert.IsNotNull(manager);
     }
 
-    public void onMove(InputAction.CallbackContext context_) 
-    {
-        if(!enableInput)
-            return;
-
-        Vector2 move = context_.ReadValue<Vector2>();
-        manager.Player.GetComponent<CanMove>()?.moveToward(new Vector3(move.x, move.y));
+    void Start() {
+        Control.FPS.SetCallbacks(this);
+        switchScheme(E_InputScheme.FPS); //DEBUG
     }
 
     public void onLook(InputAction.CallbackContext context_)
@@ -72,27 +61,30 @@ public class InputManager : MonoBehaviour
 
     public void onShoot(InputAction.CallbackContext context_) 
     {
+        throw new System.NotImplementedException();
+    }
+
+    void ControlScheme.IFPSActions.OnMenu(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void ControlScheme.IFPSActions.OnMove(InputAction.CallbackContext context)
+    {
+        if(!enableInput)
+            return;
+
+        Vector2 move = context.ReadValue<Vector2>();
+        manager.Player.GetComponent<CanMove>()?.moveToward(new Vector3(move.x, 0, move.y));
+    }
+
+    void ControlScheme.IFPSActions.OnShoot(InputAction.CallbackContext context)
+    {
         if(!enableInput)
             return;
             
-        if (context_.performed) {
+        if (context.performed) {
             manager.Player.GetComponentInChildren<CanShoot>()?.shoot();
-        }
-    }
-
-    public void OnControlSchemeChange(PlayerInput pi_) {
-        checkControlScheme(pi_.currentControlScheme);
-    }
-
-    private void checkControlScheme(string controlSchemeName_) {
-        if (controlSchemeName_.Equals("Gamepad")) {
-            //Starting using gamepad
-            Debug.Log("Using Gamepad");
-            _isUsingGamepad = true;
-        } else {
-            //Starting using keyboard
-            Debug.Log("Using Keyboard");
-            _isUsingGamepad = false;
         }
     }
 }
