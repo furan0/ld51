@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FxDatabase", menuName = "ScriptableObjects/FxDatabase", order = 1)]
+[CreateAssetMenu(fileName = "FxDatabase", menuName = "ScriptableObjects/Databases/FxDatabase", order = 1)]
 public class FxDatabase : ScriptableObject
 {
     [System.Serializable]
