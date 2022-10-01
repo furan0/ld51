@@ -16,3 +16,6 @@ MonoBehaviour:
   - alias: SHOT
     fxs:
     - {fileID: 7897959913543574062, guid: 6b69f13e5ccf76648ae0150595275d48, type: 3}
+  - alias: DIE
+    fxs:
+    - {fileID: 516497156176929237, guid: 5ffa7c1f5105e094ca314e257a7674dc, type: 3}
