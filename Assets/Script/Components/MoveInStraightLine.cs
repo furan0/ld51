@@ -8,6 +8,7 @@ public class MoveInStraightLine : MonoBehaviour
 
     void Start()
     {
+        direction = transform.TransformDirection(Vector3.forward);
         direction.Normalize();
     }
 

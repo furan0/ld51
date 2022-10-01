@@ -25,7 +25,7 @@ public class CanShot : MonoBehaviour
 
     //Shoot forward
     public void shoot() {
-        shoot(bulletSpawner.rotation);
+        shoot(bulletSpawner.transform.rotation);
         Debug.Log("Shoty shot from " + gameObject.name);
     }
 

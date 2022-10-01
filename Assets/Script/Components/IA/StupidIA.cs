@@ -10,11 +10,16 @@ Look out for the player in a straight line. If found, do the followings :
 */
 public class StupidIA : MonoBehaviour
 {
-    [Header("Walk parameters")]
-    [SerializeField] float detectionRange = 10.0f;
+    [Header("Idle parameters")]
     [SerializeField, Range(0,1)] float idleProbability = 0.3f; //Lazy Bum
-    [SerializeField] float maxDeviationAngle = 10.0f;
+    [SerializeField] float detectionRange = 10.0f;
+    [SerializeField] float minTimeInIdle = 0.2f;
+    private float timeSinceStartIdle = 0.0f;
+
+    [Header("Walk parameters")]
+    [SerializeField] float maxDeviationAngle = 25.0f;
     [SerializeField] float minWalkTime = 0.5f;
+    [SerializeField] float wantedDistance = 4.0f;
     private float timeSinceStartWalk = 0.0f;
     private Vector3 movePos;
     [Header("Shot parameter")]
@@ -44,6 +49,7 @@ public class StupidIA : MonoBehaviour
         state = E_State.IDLE;
         lastTimeSinceShot = 0.0f;
         timeSinceStartWalk = 0.0f;
+        timeSinceStartIdle = 0.0f;
         movePos = transform.position;
     }
 
@@ -53,17 +59,20 @@ public class StupidIA : MonoBehaviour
         RaycastHit hit;
         lastTimeSinceShot += Time.deltaTime;
         timeSinceStartWalk += Time.deltaTime;
+        timeSinceStartIdle += Time.deltaTime;
         bool playerFound = lookForPlayer(out hit);
 
         switch (state) {
             case E_State.IDLE:
-                if (!playerFound)
+                if ((timeSinceStartIdle < minTimeInIdle) || !playerFound)
                     break;
                 //Player found ! hurra  !
 
                 //Are we lazy ?
-                if (isLazy())
+                if (isLazy()) {
+                    timeSinceStartIdle = 0.0f;
                     break;
+                }
                 
                 // Or not I guess... Is the player in shoting range ?
                 if ((hit.distance <= shotDistance) && (lastTimeSinceShot > timeBetweenShot)) {
@@ -88,6 +97,7 @@ public class StupidIA : MonoBehaviour
 
                 //Are we lazy ?
                 if (isLazy()) {
+                    timeSinceStartIdle = 0.0f;
                     state = E_State.IDLE;
                     break;
                 }
@@ -100,18 +110,11 @@ public class StupidIA : MonoBehaviour
                 
                 // Let's move baby !
                 timeSinceStartWalk = 0.0f;
-                movePos = hit.transform.position;
-                //Add random angle
-                float rng = Random.Range(-maxDeviationAngle, maxDeviationAngle);
-                movePos = Quaternion.Euler(0, rng, 0) * movePos;
+                movePos = calculateWalkingPos(hit.transform.position);
                 move?.moveTo(movePos);
             break;
 
             case E_State.SHOT:
-                //Are we lazy ?
-                if (isLazy())
-                    break;
-
                 // Or not I guess... Is the player in shoting range ?
                 if ((hit.distance <= shotDistance) && (lastTimeSinceShot > timeBetweenShot)) {
                     // PEW PEW !
@@ -119,6 +122,7 @@ public class StupidIA : MonoBehaviour
                     lastTimeSinceShot = 0.0f;
                 }
 
+                timeSinceStartIdle = 0.0f;
                 state = E_State.IDLE;
             break;
         }
@@ -138,5 +142,21 @@ public class StupidIA : MonoBehaviour
         //Throw a dice to see if we are currently lazy...
         float rng = Random.Range(0.0f, 1.0f);
         return (rng <= idleProbability);
+    }
+
+    Vector3 calculateWalkingPos(Vector3 targetPos) {
+        Vector3 targetDirection = targetPos - transform.position;
+        float rng = Random.Range(-maxDeviationAngle, maxDeviationAngle);
+        targetDirection = Quaternion.Euler(0, rng, 0) * targetDirection.normalized;
+
+        return targetPos - targetDirection * wantedDistance;
+    }
+
+    //DEBUG
+    void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(movePos, 0.8f);
     }
 }

@@ -101,6 +101,9 @@ GameObject:
   - component: {fileID: 636641920}
   - component: {fileID: 636641921}
   - component: {fileID: 636641922}
+  - component: {fileID: 4775674998712543323}
+  - component: {fileID: 5859598599115636880}
+  - component: {fileID: 636641925}
   m_Layer: 7
   m_Name: Freud
   m_TagString: Ennemy
@@ -133,10 +136,10 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940401193936931195}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_Mass: 10
+  m_Drag: 99999
+  m_AngularDrag: 99999
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -152,9 +155,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.76
-  m_Height: 3
+  m_Height: 3.76
   m_Direction: 1
-  m_Center: {x: 0.06, y: 0, z: 0}
+  m_Center: {x: 0.06, y: -0.34, z: 0}
 --- !u!114 &1076534441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +202,42 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 636641915}
         m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 636641921}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 636641919}
+        m_TargetAssemblyTypeName: CanMove, Assembly-CSharp
+        m_MethodName: set_IsEnabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 636641922}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -286,14 +325,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f60e100489f6f419590c474835533d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 0.2
-  desiredSped: 10
+  acceleration: 0.15
+  desiredSped: 7
   moveThreshold: 0.1
   desiredSpeedMultiplicator: 1
   walkEventPeriod: 0.5
   walkEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5859598599115636880}
+        m_TargetAssemblyTypeName: CanPlaySound, Assembly-CSharp
+        m_MethodName: playSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: WALK
+          m_BoolArgument: 0
+        m_CallState: 2
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &636641920
 MonoBehaviour:
@@ -309,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 7795151791747620611}
   stayAliveDuration: 0.5
+  keepAsparent: 0
 --- !u!114 &636641921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,12 +373,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bf2eacaa21cb04f8cf57fe6ae83dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 10
-  idleProbability: 0.3
-  maxDeviationAngle: 10
+  idleProbability: 0.15
+  detectionRange: 15
+  minTimeInIdle: 0.2
+  maxDeviationAngle: 25
   minWalkTime: 0.5
-  shotDistance: 5
-  timeBetweenShot: 2
+  wantedDistance: 7
+  shotDistance: 12
+  timeBetweenShot: 1
   state: 0
 --- !u!114 &636641922
 MonoBehaviour:
@@ -342,12 +396,143 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawner: {fileID: 2344475244525820620}
   bulletPrefab:
-  - {fileID: 516497156176929237, guid: 5ffa7c1f5105e094ca314e257a7674dc, type: 3}
+  - {fileID: 8921055867393414540, guid: 4c570fa39e251654c8c03ba80b088e27, type: 3}
   prefabNbUsed: 0
   fxAlias: SHOOT
   pewpewFired:
     m_PersistentCalls:
       m_Calls: []
+--- !u!82 &4775674998712543323
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940401193936931195}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5859598599115636880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940401193936931195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de7e323f4b96e84c9f6e9c972315fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 4775674998712543323}
+--- !u!195 &636641925
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940401193936931195}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.75
+  m_Speed: 6
+  m_Acceleration: 9
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0.2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 3.74
+  m_BaseOffset: 2.21
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1289091984911539218
 GameObject:
   m_ObjectHideFlags: 0

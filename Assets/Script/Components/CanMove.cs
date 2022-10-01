@@ -22,6 +22,7 @@ public class CanMove : DisbaledOnDeath
     protected Rigidbody rb;
     Animator animator;
     bool isUsingNavAgent = false;
+    NavMeshAgent agent;
 
     bool isMoving = false;
     public bool IsMoving {
@@ -37,8 +38,10 @@ public class CanMove : DisbaledOnDeath
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         Assert.IsNotNull(rb);
+        isUsingNavAgent = (agent != null);
     }
 
     void Update()
@@ -60,6 +63,9 @@ public class CanMove : DisbaledOnDeath
             //moveTo(transform.position);
             moveToward(Vector3.zero);
         }
+
+        if(isUsingNavAgent)
+                agent.isStopped = !isEnabled;
     }
 
     /** Request a mover to a given pos
@@ -67,16 +73,18 @@ public class CanMove : DisbaledOnDeath
     */
     public void moveTo(Vector3 destination_)
     {
-        Debug.Log("Move To " + destination_);
-        //TODO
-
-        /*if (isUsingNavAgent) {
+        if (isUsingNavAgent) {
             //Using navmesh -> send the command to the navmesh agent
-            agent.moveTo(destination_);
+            agent.SetDestination(destination_);
 
         } else {
-            Debug.LogError("CanMove::MoveTo requires a pathfinding agent !");
-        }*/
+            //Stupid as fuck moveTo
+            Vector3 direction = destination_  - transform.position;
+            if (direction.magnitude <= moveThreshold)
+                moveToward(Vector3.zero);
+            else
+                moveToward(direction.normalized);
+        }
     }
 
     /** Request a mover in a given direction
