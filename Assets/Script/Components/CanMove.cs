@@ -43,7 +43,7 @@ public class CanMove : DisbaledOnDeath
 
     void Update()
     {
-        animator?.SetBool("Run", IsMoving);
+        animator?.SetBool("isWalking", IsMoving);
 
         if (isMoving && (Time.time > nextWalkEventTime)) {
             walkEvent?.Invoke();
