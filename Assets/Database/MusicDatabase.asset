@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acce62ab187ab474cb31fabcd42450d9, type: 3}
+  m_Name: MusicDatabase
+  m_EditorClassIdentifier: 
+  database:
+  - alias: MENU
+    musics:
+    - {fileID: 8300000, guid: ba3ff0efc29f9a34f943c51f32eaa93a, type: 3}
+  - alias: PSY
+    musics:
+    - {fileID: 8300000, guid: 663620ba7914b53488887da9469f6dc0, type: 3}
+  - alias: NRV
+    musics:
+    - {fileID: 8300000, guid: be3af5e7db5d7d5459dfdd7c23f3d806, type: 3}
+    - {fileID: 8300000, guid: 8e025cc14dba0b64f981a6fbd2593f40, type: 3}
+    - {fileID: 8300000, guid: d84a7560c76b6de4f9599891830436a3, type: 3}
