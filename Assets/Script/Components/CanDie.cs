@@ -38,6 +38,8 @@ public class CanDie : MonoBehaviour
 
         isAlive = false;
         killedFx.Invoke(fxAlias);
+
+        Debug.Log("Death of " + gameObject.name);
     }
 
     private void FixedUpdate() {
