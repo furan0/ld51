@@ -607,6 +607,15 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""a42d9b3c-65ac-47f3-8e2d-29eabae690d5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -818,6 +827,28 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""737da5c3-ce64-4d99-8334-44f474c97cd8"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=2,y=2)"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a862413c-d47a-4b29-8273-a661cf436f80"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -833,8 +864,8 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<Mouse>"",
-                    ""isOptional"": true,
+                    ""devicePath"": ""<Pointer>"",
+                    ""isOptional"": false,
                     ""isOR"": false
                 }
             ]
@@ -867,6 +898,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
         m_FPS_Menu = m_FPS.FindAction("Menu", throwIfNotFound: true);
         m_FPS_Move = m_FPS.FindAction("Move", throwIfNotFound: true);
         m_FPS_Shoot = m_FPS.FindAction("Shoot", throwIfNotFound: true);
+        m_FPS_Look = m_FPS.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1027,6 +1059,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
     private readonly InputAction m_FPS_Menu;
     private readonly InputAction m_FPS_Move;
     private readonly InputAction m_FPS_Shoot;
+    private readonly InputAction m_FPS_Look;
     public struct FPSActions
     {
         private @ControlScheme m_Wrapper;
@@ -1034,6 +1067,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
         public InputAction @Menu => m_Wrapper.m_FPS_Menu;
         public InputAction @Move => m_Wrapper.m_FPS_Move;
         public InputAction @Shoot => m_Wrapper.m_FPS_Shoot;
+        public InputAction @Look => m_Wrapper.m_FPS_Look;
         public InputActionMap Get() { return m_Wrapper.m_FPS; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1052,6 +1086,9 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_FPSActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_FPSActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_FPSActionsCallbackInterface.OnShoot;
+                @Look.started -= m_Wrapper.m_FPSActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_FPSActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_FPSActionsCallbackInterface.OnLook;
             }
             m_Wrapper.m_FPSActionsCallbackInterface = instance;
             if (instance != null)
@@ -1065,6 +1102,9 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
             }
         }
     }
@@ -1104,5 +1144,6 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
         void OnMenu(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }

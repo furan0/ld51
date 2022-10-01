@@ -7,12 +7,17 @@ using UnityEngine.InputSystem;
 public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
 {
     private MainManager manager;
+    private Vector3 currentMoveTo;
+
+    [SerializeField] public float lookSensitivity = 1.0f;
+     private float xRotation = 0f;
 
     // Start is called before the first frame update
     void Awake()
     {
         manager = GetComponent<MainManager>();
         Assert.IsNotNull(manager);
+        currentMoveTo = Vector3.zero;
     }
 
     void Start() {
@@ -20,48 +25,8 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
         switchScheme(E_InputScheme.FPS); //DEBUG
     }
 
-    public void onLook(InputAction.CallbackContext context_)
-    {
-        if(!enableInput)
-            return;
-
-        Vector2 value = context_.ReadValue<Vector2>();
-        CanAim[] aimingComponents = manager.Player.GetComponentsInChildren<CanAim>();
-        
-        /*if(_isUsingGamepad) {
-            //Gamepad -> Value == direction looked at
-            //Ignore null vector  (stick released)
-            if (value.Equals(Vector2.zero))
-                return;
-            
-            Vector3 directionAimedTo = new Vector3(value.x, value.y);
-
-            //Update aim components
-            foreach (CanAim aimComp in aimingComponents)
-            {
-                aimComp.updateAimedDirection(directionAimedTo);
-            }
-
-
-        } else {
-            //Mouse -> Value == position to look at after convertion to world space
-            Vector3 positionAimedTo = Camera.main.ScreenToWorldPoint(new Vector3(value.x, value.y));
-            positionAimedTo.z = 0;
-
-            //Update aim components
-            foreach (CanAim aimComp in aimingComponents)
-            {
-                aimComp.updateAimedPosition(positionAimedTo);
-            }
-        }*/
-
-        //TODO
-
-    }
-
-    public void onShoot(InputAction.CallbackContext context_) 
-    {
-        manager.Player.GetComponent<CanShot>()?.shoot();
+    void FixedUpdate() {
+        manager.Player.GetComponent<CanMove>()?.moveToward(Camera.main.transform.forward * currentMoveTo.y + Camera.main.transform.right * currentMoveTo.x);
     }
 
     void ControlScheme.IFPSActions.OnMenu(InputAction.CallbackContext context)
@@ -74,8 +39,7 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
         if(!enableInput)
             return;
 
-        Vector2 move = context.ReadValue<Vector2>();
-        manager.Player.GetComponent<CanMove>()?.moveToward(new Vector3(move.x, 0, move.y));
+        currentMoveTo = context.ReadValue<Vector2>();
     }
 
     void ControlScheme.IFPSActions.OnShoot(InputAction.CallbackContext context)
@@ -86,5 +50,24 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
         if (context.performed) {
             manager.Player.GetComponentInChildren<CanShot>()?.shoot();
         }
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        if(!enableInput)
+            return;
+
+        Vector2 value = context.ReadValue<Vector2>();
+
+        float lookX = value.x * lookSensitivity * Time.deltaTime;
+        float lookY = value.y * lookSensitivity * Time.deltaTime;
+
+        xRotation -= lookY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        
+        Camera.main.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        
+        manager.Player.transform.Rotate(Vector3.up * lookX);
+
     }
 }
