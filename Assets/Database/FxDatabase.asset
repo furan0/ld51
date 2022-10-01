@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694770148e206aa45852ee1591bcdf78, type: 3}
   m_Name: FxDatabase
   m_EditorClassIdentifier: 
-  database: []
+  database:
+  - alias: SHOT
+    fxs:
+    - {fileID: 7897959913543574062, guid: 6b69f13e5ccf76648ae0150595275d48, type: 3}

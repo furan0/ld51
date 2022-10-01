@@ -61,7 +61,7 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
 
     public void onShoot(InputAction.CallbackContext context_) 
     {
-        throw new System.NotImplementedException();
+        manager.Player.GetComponent<CanShot>()?.shoot();
     }
 
     void ControlScheme.IFPSActions.OnMenu(InputAction.CallbackContext context)
@@ -84,7 +84,7 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
             return;
             
         if (context.performed) {
-            manager.Player.GetComponentInChildren<CanShoot>()?.shoot();
+            manager.Player.GetComponentInChildren<CanShot>()?.shoot();
         }
     }
 }

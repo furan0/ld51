@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Fxs
+    uniqueID: 2972191317
+    locked: 0
+  - name: TopOfEverything
+    uniqueID: 771389401
+    locked: 0

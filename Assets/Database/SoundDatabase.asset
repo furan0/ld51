@@ -21,3 +21,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 580bbe7244f05294fbca8c8c13dfd470, type: 3}
     - {fileID: 8300000, guid: 2327e4387a488d64d8e3b2d047a66f37, type: 3}
     - {fileID: 8300000, guid: 6775ac96a4933134ab6300afb1c41d4a, type: 3}
+  - alias: SHOT
+    clips:
+    - {fileID: 8300000, guid: 079242041031dca4c8b45e113855ec32, type: 3}
+    - {fileID: 8300000, guid: a2fefcc45266fc54ab2d6b0a62068615, type: 3}
+    - {fileID: 8300000, guid: e8aacdf43c0907a4c845558242f03fe6, type: 3}
+    - {fileID: 8300000, guid: c31db8f60320b3b4c935f5e1f4a33138, type: 3}
