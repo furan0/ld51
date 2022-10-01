@@ -22,6 +22,9 @@ public class HasLife : MonoBehaviour
 
     public void changeLife(int delta) 
     {
+        if (delta == 0)
+            return;
+
         currentLife += delta;
         if (currentLife > lifeMax) {
             currentLife = lifeMax;

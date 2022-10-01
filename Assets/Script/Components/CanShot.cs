@@ -25,21 +25,20 @@ public class CanShot : MonoBehaviour
 
     //Shoot forward
     public void shoot() {
-        shoot(transform.forward);
+        shoot(bulletSpawner.rotation);
+        Debug.Log("Shoty shot from " + gameObject.name);
     }
 
-    public void shoot(Vector3 dir_) {
-        dir_.z = 0;
+    public void shoot(Quaternion dir_) {
         dir_.Normalize();
         Vector3 pos = bulletSpawner.position;
-        GameObject bullet = Instantiate(bulletPrefab[prefabNbUsed], pos, Quaternion.Euler(dir_));
+        GameObject bullet = Instantiate(bulletPrefab[prefabNbUsed], pos, dir_);
         MoveInStraightLine bulletMovement = bullet.GetComponent<MoveInStraightLine>();
         if (bulletMovement != null)
-            bulletMovement.direction = dir_;
+            bulletMovement.direction = dir_.eulerAngles;
         
         //FX
         Vector3 dirFx = new Vector3(0, 0, transform.eulerAngles.z);
         pewpewFired?.Invoke(pos, dirFx, fxAlias);
-        Camera.main.GetComponent<CanShake>()?.shakeMoiCa();
     }
 }

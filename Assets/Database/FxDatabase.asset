@@ -19,3 +19,9 @@ MonoBehaviour:
   - alias: DIE
     fxs:
     - {fileID: 516497156176929237, guid: 5ffa7c1f5105e094ca314e257a7674dc, type: 3}
+  - alias: HIT_FREUD
+    fxs:
+    - {fileID: 7188363336166054789, guid: b5dd5863031447543afefb263083c563, type: 3}
+  - alias: SHOT_RAY
+    fxs:
+    - {fileID: 4823310796111697678, guid: ff0fab9ba04197e4782399ed50ef6c0e, type: 3}

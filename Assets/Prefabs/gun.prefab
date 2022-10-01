@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5097195968539747107}
   - component: {fileID: 5097195968539747292}
   - component: {fileID: 7959886448572469182}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 408290510778312241}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ' PewPew Goes Here'
   m_TagString: Untagged
   m_Icon: {fileID: 0}

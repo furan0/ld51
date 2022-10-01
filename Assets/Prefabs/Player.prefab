@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 828609728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6586724536810443497}
@@ -130,8 +130,8 @@ Rigidbody:
   m_GameObject: {fileID: 6586724535655460331}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 99999
+  m_AngularDrag: 1e+11
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -361,6 +361,18 @@ MonoBehaviour:
           m_StringArgument: shot
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 42359426}
+        m_TargetAssemblyTypeName: CanDoAwesomeFX, Assembly-CSharp
+        m_MethodName: doFx
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SHOT_RAY
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6586724536810443494
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,18 +533,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5097195968539747107, guid: 206612ae3967138478fdf6d44c5c02d7,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097195968539747107, guid: 206612ae3967138478fdf6d44c5c02d7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097195968539747107, guid: 206612ae3967138478fdf6d44c5c02d7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097195968539747107, guid: 206612ae3967138478fdf6d44c5c02d7,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.17
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 5097195968539747107, guid: 206612ae3967138478fdf6d44c5c02d7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.44
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 5097195968539747107, guid: 206612ae3967138478fdf6d44c5c02d7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 5097195968539747107, guid: 206612ae3967138478fdf6d44c5c02d7,
         type: 3}
@@ -576,6 +603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5097195968539747292, guid: 206612ae3967138478fdf6d44c5c02d7,
         type: 3}
+      propertyPath: m_SortingOrder
+      value: 32767
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097195968539747292, guid: 206612ae3967138478fdf6d44c5c02d7,
+        type: 3}
       propertyPath: m_SortingLayerID
       value: 771389401
       objectReference: {fileID: 0}
@@ -611,8 +643,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1765083008751973533}
-  spawnDir: {x: 0, y: 0, z: 0}
   stayAliveDuration: 1
+  keepAsparent: 1
 --- !u!4 &6586724535921996175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5097195968539747107, guid: 206612ae3967138478fdf6d44c5c02d7,

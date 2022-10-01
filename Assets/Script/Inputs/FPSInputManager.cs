@@ -8,9 +8,13 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
 {
     private MainManager manager;
     private Vector3 currentMoveTo;
+    private Vector3 currentLook;
 
     [SerializeField] public float lookSensitivity = 1.0f;
-     private float xRotation = 0f;
+    [SerializeField] public float minXAngle = -45.0f;
+    [SerializeField] public float maxXAngle = 45.0f;
+    private float xRotation = 0f;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -18,15 +22,34 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
         manager = GetComponent<MainManager>();
         Assert.IsNotNull(manager);
         currentMoveTo = Vector3.zero;
+        currentLook = Vector3.forward;
+        xRotation = 0;
     }
 
     void Start() {
         Control.FPS.SetCallbacks(this);
         switchScheme(E_InputScheme.FPS); //DEBUG
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void FixedUpdate() {
+    void Update() {
+        handleLook();
         manager.Player.GetComponent<CanMove>()?.moveToward(Camera.main.transform.forward * currentMoveTo.y + Camera.main.transform.right * currentMoveTo.x);
+    }
+
+    void handleLook() {
+        float lookX = currentLook.x * lookSensitivity * Time.deltaTime;
+        float lookY = currentLook.y * lookSensitivity * Time.deltaTime;
+
+        xRotation -= lookY;
+        if (xRotation > 1000 || xRotation < -1000)
+            xRotation = 0;
+        else
+            xRotation = Mathf.Clamp(xRotation, minXAngle, maxXAngle);
+        
+        Camera.main.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        
+        manager.Player.transform.Rotate(Vector3.up * lookX);
     }
 
     void ControlScheme.IFPSActions.OnMenu(InputAction.CallbackContext context)
@@ -48,7 +71,7 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
             return;
             
         if (context.performed) {
-            manager.Player.GetComponentInChildren<CanShot>()?.shoot();
+            manager.Player.GetComponentInChildren<CanShot>()?.shoot(Camera.main.transform.rotation);
         }
     }
 
@@ -56,18 +79,7 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
     {
         if(!enableInput)
             return;
-
-        Vector2 value = context.ReadValue<Vector2>();
-
-        float lookX = value.x * lookSensitivity * Time.deltaTime;
-        float lookY = value.y * lookSensitivity * Time.deltaTime;
-
-        xRotation -= lookY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         
-        Camera.main.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        
-        manager.Player.transform.Rotate(Vector3.up * lookX);
-
+        currentLook = context.ReadValue<Vector2>();
     }
 }

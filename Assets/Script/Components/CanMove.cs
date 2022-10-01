@@ -67,6 +67,7 @@ public class CanMove : DisbaledOnDeath
     */
     public void moveTo(Vector3 destination_)
     {
+        Debug.Log("Move To " + destination_);
         //TODO
 
         /*if (isUsingNavAgent) {

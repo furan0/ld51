@@ -97,6 +97,10 @@ GameObject:
   - component: {fileID: 1076534441}
   - component: {fileID: 636641914}
   - component: {fileID: 636641918}
+  - component: {fileID: 636641919}
+  - component: {fileID: 636641920}
+  - component: {fileID: 636641921}
+  - component: {fileID: 636641922}
   m_Layer: 7
   m_Name: Freud
   m_TagString: Ennemy
@@ -117,6 +121,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4995305847478188207}
+  - {fileID: 7795151791747620611}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -162,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5b90f31fedf494286bde9205e2b4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockOnlyY: 0
 --- !u!114 &636641914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,10 +246,139 @@ MonoBehaviour:
       m_Calls: []
   lifeLost:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 636641920}
+        m_TargetAssemblyTypeName: CanDoAwesomeFX, Assembly-CSharp
+        m_MethodName: doFx
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HIT_FREUD
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2608974038491106022}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: hurt
+          m_BoolArgument: 0
+        m_CallState: 2
   lifeGained:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &636641919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940401193936931195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f60e100489f6f419590c474835533d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: 0.2
+  desiredSped: 10
+  moveThreshold: 0.1
+  desiredSpeedMultiplicator: 1
+  walkEventPeriod: 0.5
+  walkEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  direction: {x: 0, y: 0, z: 0}
+--- !u!114 &636641920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940401193936931195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72825278c7eec7c4691de9bfdbc5bff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 7795151791747620611}
+  stayAliveDuration: 0.5
+--- !u!114 &636641921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940401193936931195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bf2eacaa21cb04f8cf57fe6ae83dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 10
+  idleProbability: 0.3
+  maxDeviationAngle: 10
+  minWalkTime: 0.5
+  shotDistance: 5
+  timeBetweenShot: 2
+  state: 0
+--- !u!114 &636641922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940401193936931195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5b890bad2110744ae321387de653d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpawner: {fileID: 2344475244525820620}
+  bulletPrefab:
+  - {fileID: 516497156176929237, guid: 5ffa7c1f5105e094ca314e257a7674dc, type: 3}
+  prefabNbUsed: 0
+  fxAlias: SHOOT
+  pewpewFired:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1289091984911539218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7795151791747620611}
+  m_Layer: 7
+  m_Name: HitPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7795151791747620611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289091984911539218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.289}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2344475244525820620}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1999043183494345240
 GameObject:
   m_ObjectHideFlags: 0

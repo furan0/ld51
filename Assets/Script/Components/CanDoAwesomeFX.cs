@@ -9,8 +9,8 @@ public class CanDoAwesomeFX : MonoBehaviour
 {
     [Header("Params")]
     [SerializeField] protected Transform spawnPoint;
-    [SerializeField] protected Vector3 spawnDir = Vector3.zero;
     [SerializeField] protected float stayAliveDuration = 5.0f;
+    [SerializeField, Tooltip("Use current GameObject as parent for spawned effect")] protected bool keepAsparent  = false;
     private FxDatabase database;
 
     private List<GameObject> ongoingFxs;
@@ -27,7 +27,8 @@ public class CanDoAwesomeFX : MonoBehaviour
 
     private void spawnFx(GameObject fx_, Vector3 spawnPoint_, Vector3 dir_, float duration_)
     {
-        GameObject obj = Instantiate(fx_, spawnPoint_, Quaternion.Euler(dir_));
+        GameObject obj = (keepAsparent)? Instantiate(fx_, spawnPoint_, Quaternion.Euler(dir_), transform) : Instantiate(fx_, spawnPoint_, Quaternion.Euler(dir_));
+
         //obj.transform.eulerAngles = dir_;
         Destroy(obj, duration_);
     }
@@ -46,19 +47,19 @@ public class CanDoAwesomeFX : MonoBehaviour
     }
 
     public void doFx(string fxAlias_) {
-        spawnFx(database.getFx(fxAlias_), spawnPoint.position, spawnDir, stayAliveDuration);
+        spawnFx(database.getFx(fxAlias_), spawnPoint.position, spawnPoint.rotation.eulerAngles, stayAliveDuration);
     }
 
     public void doFxAndKeepItAlive(string fxAlias_) {
-        ongoingFxs.Add(Instantiate(database.getFx(fxAlias_), spawnPoint.position, Quaternion.Euler(spawnDir)));
+        ongoingFxs.Add(Instantiate(database.getFx(fxAlias_), spawnPoint.position, spawnPoint.rotation));
     }
 
     public void doFxAfterDelay(float delay_, string fxAlias_) {
-        StartCoroutine(spawnAfterDelay(database.getFx(fxAlias_), spawnPoint.position, spawnDir, stayAliveDuration, delay_));
+        StartCoroutine(spawnAfterDelay(database.getFx(fxAlias_), spawnPoint.position, spawnPoint.rotation.eulerAngles, stayAliveDuration, delay_));
     }
 
     public void doFx(Vector3 spawnPos_, string fxAlias_) {
-        spawnFx(database.getFx(fxAlias_), spawnPos_, spawnDir, stayAliveDuration);
+        spawnFx(database.getFx(fxAlias_), spawnPos_, spawnPoint.rotation.eulerAngles, stayAliveDuration);
     }
 
     public void doFx(Vector3 spawnPos_, Vector3 spawnDir_, string fxAlias_) {
@@ -66,11 +67,11 @@ public class CanDoAwesomeFX : MonoBehaviour
     }
 
     public void doFx(float duration_, string fxAlias_) {
-        spawnFx(database.getFx(fxAlias_), spawnPoint.position, spawnDir, duration_);
+        spawnFx(database.getFx(fxAlias_), spawnPoint.position, spawnPoint.rotation.eulerAngles, duration_);
     }
 
     public void doFx(Vector3 spawnPos_, float duration_, string fxAlias_) {
-        spawnFx(database.getFx(fxAlias_), spawnPos_, spawnDir, duration_);
+        spawnFx(database.getFx(fxAlias_), spawnPos_, spawnPoint.rotation.eulerAngles, duration_);
     }
 
     public void doFx(Vector3 spawnPos_, Vector3 spawnDir_, float duration_, string fxAlias_) {
