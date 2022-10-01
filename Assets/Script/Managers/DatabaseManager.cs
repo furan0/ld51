@@ -7,6 +7,7 @@ public class DatabaseManager : MonoBehaviour
 {
     public FxDatabase fxDatabase;
     public SoundDatabase soundDatabase;
+    public MusicDatabase musicDatabase;
     public GameSettings settings;
 
     // Start is called before the first frame update
@@ -19,5 +20,8 @@ public class DatabaseManager : MonoBehaviour
         soundDatabase.populateDict();
 
         Assert.IsNotNull(settings);
+
+        Assert.IsNotNull(musicDatabase);
+        musicDatabase.populateDict();
     }
 }

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneDeTestALaCon.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/root.unity
+    guid: 459b208e431dbb24ead7cd46b7fed1a2
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 2cb431395aeaf884d9be974fa8c67a55
   - enabled: 1
