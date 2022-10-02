@@ -9,6 +9,8 @@ public class MainManager : MonoBehaviour
 
     [Header("General settings")]
     [SerializeField] protected GameObject player;
+    [SerializeField] float delayBeforeEverythingStart = 1.0f;
+    [SerializeField] float delayBeforeSwitchingScene = 1.0f;
 
     public GameObject Player {
         get {return player;}
@@ -16,6 +18,7 @@ public class MainManager : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent defeat;
+    public UnityEvent startStuff;
     public UnityEvent modeSwitch;
 
     [SerializeField] private bool isDefeat = false;
@@ -30,6 +33,8 @@ public class MainManager : MonoBehaviour
         player.GetComponent<CanDie>()?.objectKilledEvent.AddListener(() => {
             signalPlayerDeath();
         });
+
+        StartCoroutine(startTimerAndGameAfterALittleWhile());
     }
 
     // Update is called once per frame
@@ -63,5 +68,18 @@ public class MainManager : MonoBehaviour
     // ==== Debug functions ====
     public void killCurrentPlayer() {
         player.GetComponent<CanDie>()?.kill();
+    }
+
+    public void changeMode() {
+        Debug.Log("Mode switcheing to ZEN");
+        modeSwitch.Invoke();
+        //change scene after a while
+        GameObject.FindGameObjectWithTag("Root")?.GetComponent<SceneLoader>()?.switchSceneAfterDelay("Psy", delayBeforeSwitchingScene);
+    }
+
+    private IEnumerator startTimerAndGameAfterALittleWhile() {
+        yield return new WaitForSeconds(delayBeforeEverythingStart);
+        startStuff?.Invoke();
+        Debug.Log("FPS fully started");
     }
 }

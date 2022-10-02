@@ -5,6 +5,7 @@ using UnityEngine.Assertions;
 
 public class FreudDeath : MonoBehaviour
 {
+    [SerializeField] GameObject thingToDestroyAtTheEnd;
     [SerializeField] float delayInitial = 0.01f;
     [SerializeField] Transform spawner1;
     [SerializeField] float scale1 = 1.0f;
@@ -24,7 +25,7 @@ public class FreudDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fxs =  GameObject.FindGameObjectWithTag("GameController")?.GetComponent<DatabaseManager>()?.fxDatabase;
+        fxs =  GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>()?.fxDatabase;
 
         Assert.IsNotNull(spawner1);
         Assert.IsNotNull(spawner2);
@@ -60,6 +61,7 @@ public class FreudDeath : MonoBehaviour
         Destroy(obj, autoDestructTime);
 
         yield return new WaitForSeconds(finalDelay);
-        Destroy(transform.parent.gameObject);
+        if (thingToDestroyAtTheEnd != null)
+        Destroy(thingToDestroyAtTheEnd);
     }
 }

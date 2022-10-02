@@ -96,7 +96,7 @@ public class StupidIA : MonoBehaviour
                 }
 
                 //Are we lazy ?
-                if (isLazy()) {
+                if (isLazy() ||!playerFound) {
                     timeSinceStartIdle = 0.0f;
                     state = E_State.IDLE;
                     break;
@@ -129,10 +129,10 @@ public class StupidIA : MonoBehaviour
     }
 
     bool lookForPlayer(out RaycastHit hit) {
-        Debug.Log("Stupid cast toward : " + transform.rotation.eulerAngles);
+        //Debug.Log("Stupid cast toward : " + transform.rotation.eulerAngles);
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * detectionRange, Color.yellow);
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, detectionRange, LayerMask.GetMask(new string[] {"Player", "Default"}))) {
-            Debug.Log("Something wa hit");
+            //Debug.Log("Something wa hit");
             return (hit.transform.gameObject.tag.Equals("Player"));
         } else
             return false;

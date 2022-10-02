@@ -28,7 +28,7 @@ public class CanKillPeople : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Hit touched something : " + hit.collider.gameObject);
+            Debug.Log("Hit touched something : " + hit.collider.gameObject.name);
 
             if (instaKill) {
                 CanDie die = hit.collider.gameObject.GetComponent<CanDie>();
@@ -38,7 +38,7 @@ public class CanKillPeople : MonoBehaviour
                 }
             } else {
                 HasLife life = hit.collider.gameObject.GetComponent<HasLife>();  
-                life.changeLife(-calculateDamage(hit.distance));
+                life?.changeLife(-calculateDamage(hit.distance));
             }
             
         }

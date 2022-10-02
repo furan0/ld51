@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73fab330b21d402428578ff43b704c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thingToDestroyAtTheEnd: {fileID: 940401193936931195}
   delayInitial: 0.1
   spawner1: {fileID: 576630763343614586}
   scale1: 1
