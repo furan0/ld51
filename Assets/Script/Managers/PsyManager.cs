@@ -23,10 +23,15 @@ public class PsyManager : MonoBehaviour
         Assert.IsNotNull(Yin);
         Assert.IsNotNull(Yang);
 
+        //Set life
+        DatabaseManager db = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>();
+        Assert.IsNotNull(db);
+
         ZenTuto tuto = GetComponent<ZenTuto>();
-        if (tuto != null)
+        if ((tuto != null) && !db.data.tutoAlreadyPlayed) {
+            db.data.tutoAlreadyPlayed = true;
             tuto.startTuto();
-        else
+        } else
             startGame();
     }
 
