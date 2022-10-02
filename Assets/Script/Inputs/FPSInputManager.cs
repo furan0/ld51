@@ -16,6 +16,8 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
     [SerializeField] public float maxXAngle = 45.0f;
     private float xRotation = 0f;
 
+    private GameSettings settings;
+
     public UnityEvent openMenu;
 
     // Start is called before the first frame update
@@ -30,6 +32,8 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
 
     void Start() {
         Control.FPS.SetCallbacks(this);
+        DatabaseManager db = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>();
+        settings = db?.settings;
     }
 
     new void OnEnable() {
@@ -50,8 +54,9 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
     }
 
     void handleLook() {
-        float lookX = currentLook.x * lookSensitivity * Time.deltaTime;
-        float lookY = currentLook.y * lookSensitivity * Time.deltaTime;
+        float sensibility = (settings != null)? settings.MouseVelocity : 1.0f;
+        float lookX = currentLook.x * lookSensitivity * Time.deltaTime * sensibility;
+        float lookY = currentLook.y * lookSensitivity * Time.deltaTime * sensibility;
 
         xRotation -= lookY;
         if (xRotation > 1000 || xRotation < -1000)

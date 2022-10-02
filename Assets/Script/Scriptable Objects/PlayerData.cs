@@ -10,9 +10,11 @@ public class PlayerData : ScriptableObject
     [SerializeField] private int initialLife = 5;
     public int playerHealth = 5;
     public bool tutoAlreadyPlayed = false;
+    public int score = 0;
 
     public void reset() {
         playerHealth = initialLife;
         tutoAlreadyPlayed = false;
+        score = 0;
     }
 }

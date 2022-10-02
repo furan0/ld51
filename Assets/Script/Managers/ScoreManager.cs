@@ -1,51 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Events;
+
 public class ScoreManager : MonoBehaviour
 {
 
     [SerializeField] int killPoint = 0;
-    public int score = 0;
-    public UnityEvent changeScore;
-    // Start is called before the first frame update
-    void Start()
-    {
-        MainManager manager = GetComponent<MainManager>();
+    [SerializeField] int meditationPoint = 0;
+    [SerializeField] int meditationPointBONUS = 0;
+    public UnityEvent<int, bool> changeScore;
+    public UnityEvent newHighScore;
 
-        // TODO
+    private PlayerData data;
+    private bool specialMode = false;
+    private int currentHighScore;
 
-        /*foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Spawner"))
-        {
-            obj.GetComponent<CanSpawnCrap>()?.newSpawnEvent.AddListener(newEnnemy);
-        }*/
+    void Awake() {
+        data = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>()?.data;
+        Assert.IsNotNull(data);
+        getHighScore();
     }
 
-    void addKill(){
-        score += killPoint;
-        changeScore?.Invoke();
+    void addKill() {
+        updateScore(killPoint);
     }
 
-    /*void addSpawner(CanSpawnCrap spawner) {
-        spawner.newSpawnEvent.AddListener(newEnnemy);
-    }*/
+    public void addMeditation(){
+        int pointToAdd = (specialMode)? meditationPointBONUS : meditationPoint;
+        updateScore(pointToAdd);
+    }
 
-    void newEnnemy(GameObject obj) {
-        Debug.Log("New ennemy added");
+    public void newEnnemy(GameObject obj) {
         obj.GetComponent<CanDie>()?.objectKilledEvent.AddListener(addKill);
     }
 
     public int getScore() {
-        return score;
+        return data.score;
+    }
+
+    public bool getBonus() {
+        return specialMode;
     }
 
     public int getHighScore() {
-        return PlayerPrefs.GetInt("score");
+        currentHighScore = PlayerPrefs.GetInt("score");
+        return currentHighScore;
     }
 
     public void saveScore() {
         int lastScore = PlayerPrefs.GetInt("score");
-        if (lastScore < score)
-            PlayerPrefs.SetInt("score", score);
+        if (lastScore < data.score)
+            PlayerPrefs.SetInt("score", data.score);
+    }
+
+    public bool isHighScore() {
+        return (data.score > currentHighScore);
+    }
+
+    public void lifeFull() {
+        specialMode = true;
+    }
+
+    public void lifeNotFull() {
+        specialMode = false;
+    }
+
+    void updateScore(int pointToAdd) {
+        data.score += pointToAdd;
+        changeScore?.Invoke(pointToAdd, specialMode);
+
+        if (isHighScore())
+            newHighScore?.Invoke();
     }
 }
