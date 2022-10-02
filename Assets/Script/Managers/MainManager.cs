@@ -10,6 +10,7 @@ public class MainManager : MonoBehaviour
     [Header("General settings")]
     [SerializeField] protected GameObject player;
     [SerializeField] float delayBeforeEverythingStart = 1.0f;
+    [SerializeField] float delayBeforeEverythingStartFirsTime = 5.0f;
     [SerializeField] float delayBeforeSwitchingScene = 1.0f;
 
     public GameObject Player {
@@ -33,6 +34,12 @@ public class MainManager : MonoBehaviour
         player.GetComponent<CanDie>()?.objectKilledEvent.AddListener(() => {
             signalPlayerDeath();
         });
+
+        PlayerData data = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>()?.data;
+        if ((data != null) && data.firstTimeInFPS) {
+            delayBeforeEverythingStart = delayBeforeEverythingStartFirsTime;
+            data.firstTimeInFPS = false;
+        }
 
         StartCoroutine(startTimerAndGameAfterALittleWhile());
     }

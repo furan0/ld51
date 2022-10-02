@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 3
-  damageFalloff: 0.1
+  damageFalloff: 0.005
   instaKill: 0
   selfDestruct: 1
   selfDestructDelay: 0.5
