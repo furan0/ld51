@@ -43,13 +43,13 @@ public class PsyInputManager : AInputManager, ControlScheme.IPsyActions
         switchScheme(E_InputScheme.PSY);
     }
 
-    void Update() {
+    void FixedUpdate() {
         //Yiiiiiin
         CanMoveClamped mover = manager.Yin.GetComponent<CanMoveClamped>();
         Vector3 nextPosition;
         if(mover != null) {
             nextPosition = mover.Position;
-            nextPosition.x += valueHorizontal * Time.deltaTime * moveFactor;
+            nextPosition.x += valueHorizontal * Time.fixedDeltaTime * moveFactor;
             mover.Position = nextPosition;
         }
 
@@ -57,7 +57,7 @@ public class PsyInputManager : AInputManager, ControlScheme.IPsyActions
         mover = manager.Yang.GetComponent<CanMoveClamped>();
         if(mover != null) {
             nextPosition = mover.Position;
-            nextPosition.y += valueVertical * Time.deltaTime * moveFactor;
+            nextPosition.y += valueVertical * Time.fixedDeltaTime * moveFactor;
             mover.Position = nextPosition;
         }
     }

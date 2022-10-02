@@ -19,7 +19,9 @@ public class MoveRandomPos : MonoBehaviour
         if (minTransform != null) {
             minClamp = minTransform.position;
         }
-        
+    }
+
+    public void move() {
         float x = Random.Range(minClamp.x, maxClamp.x);
         float y = Random.Range(minClamp.y, maxClamp.y);
         float z = Random.Range(minClamp.z, maxClamp.z);

@@ -16,6 +16,12 @@ public class CanMoveClamped : MonoBehaviour
 
     }
 
+    private bool isEnabled = false;
+    public bool IsEnabled {
+        get {return isEnabled; }
+        set {isEnabled = value; }
+    }
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
     }
@@ -33,6 +39,9 @@ public class CanMoveClamped : MonoBehaviour
     }
 
     void checkAndSetPos(Vector3 pos) {
+        if (!isEnabled)
+            return;
+            
         //Max
         if (pos.x > maxClamp.x)
             pos.x = maxClamp.x;
