@@ -52,6 +52,7 @@ MonoBehaviour:
   soundDatabase: {fileID: 11400000, guid: 2824cbc47b8a48041a95458c137621a9, type: 2}
   musicDatabase: {fileID: 11400000, guid: 470e0abc79fcbe442926db7084166123, type: 2}
   settings: {fileID: 11400000, guid: 30c8a011597e85548b25199c3e24a637, type: 2}
+  text: {fileID: 11400000, guid: 5f5cf78ed39885e4b963fddcca9c1930, type: 2}
 --- !u!114 &7332736766552350073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +67,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source1: {fileID: 7332736766552350072}
   source2: {fileID: 7332736766552350070}
-  startMusic: Menu
   defaultTransitionTime: 1
   onGoingTransition: 0
 --- !u!82 &7332736766552350072

@@ -12,6 +12,7 @@ public class BarreDeVie : MonoBehaviour
             MainManager mm = GameObject.FindGameObjectWithTag("GameController").GetComponent<MainManager>();
             if(mm == null){
                 Debug.LogWarning("Je n'ai pas accès au manager");
+                return;
             }
             if(mm.Player == null){
                 Debug.LogWarning("la tu cherches...");

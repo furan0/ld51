@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: PsycheDatabase
   m_EditorClassIdentifier: 
   database:
-  - Restore the <i>balance</i>
-  - How do you define your self? <i>In Ten Secondes</i>
+  - You have to reconciliate your inner <style="Emphasis">Yin</style> & <style="Emphasis">Yang</style>
+  - Restore the <style="Emphasis">balance</style>
+  - How do you define your self?<br>In <style="Emphasis">10 Secondes</style>
   - The player is in the game, The game is in the player.
-  - How is doing your Mom?
-  - "<i>I</i>invent the iceberg m\xEAme."
+  - What the relation with <style="Emphasis">your Mom</style> ?
+  - Feel your <style="Emphasis">inner-self</style>
+  - May I talk to your <style="Emphasis">other one</style> ?
+  - <style="Emphasis">Hm hm</style>...
+  - Thanks, that will be <style="Emphasis">300$</style>
+  - Keep going...

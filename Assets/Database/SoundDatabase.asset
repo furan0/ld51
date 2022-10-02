@@ -47,3 +47,9 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: cc6a2aaaa7381564ea5d90c714def507, type: 3}
     - {fileID: 8300000, guid: 69bb945dbd429254b9b8710868072799, type: 3}
+  - alias: CHAR_WRITTEN
+    clips:
+    - {fileID: 8300000, guid: 1baea4fd9eadc57498d203934e8da2b5, type: 3}
+    - {fileID: 8300000, guid: f10634252d6bdc840981c437c17bca6a, type: 3}
+    - {fileID: 8300000, guid: 98cecb243664f8847996e9b9a6bf259b, type: 3}
+    - {fileID: 8300000, guid: f24ba02bbedcb874f8e1b3c531eddcd5, type: 3}

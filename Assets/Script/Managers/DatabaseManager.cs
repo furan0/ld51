@@ -9,6 +9,7 @@ public class DatabaseManager : MonoBehaviour
     public SoundDatabase soundDatabase;
     public MusicDatabase musicDatabase;
     public GameSettings settings;
+    public PsycheDatabase text;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,5 +24,7 @@ public class DatabaseManager : MonoBehaviour
 
         Assert.IsNotNull(musicDatabase);
         musicDatabase.populateDict();
+
+        Assert.IsNotNull(text);
     }
 }
