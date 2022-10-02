@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,7 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
     [SerializeField] public float maxXAngle = 45.0f;
     private float xRotation = 0f;
 
+    public UnityEvent openMenu;
 
     // Start is called before the first frame update
     void Awake()
@@ -64,8 +66,8 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
 
     void ControlScheme.IFPSActions.OnMenu(InputAction.CallbackContext context)
     {
-        //TODO
-        Debug.LogWarning("Echap non implemente...");
+        openMenu?.Invoke();
+        enabled = false;
     }
 
     void ControlScheme.IFPSActions.OnMove(InputAction.CallbackContext context)

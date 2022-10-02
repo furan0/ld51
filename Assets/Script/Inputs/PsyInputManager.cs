@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,8 @@ public class PsyInputManager : AInputManager, ControlScheme.IPsyActions
     private float valueVertical = 0.0f;
     [SerializeField] float moveFactor = 3.0f;
 
+    public UnityEvent openMenu;
+
     public void OnHorizontal(InputAction.CallbackContext context)
     {
         valueHorizontal = context.ReadValue<float>();
@@ -18,8 +21,8 @@ public class PsyInputManager : AInputManager, ControlScheme.IPsyActions
 
     public void OnMenu(InputAction.CallbackContext context)
     {
-        //TODO
-        Debug.LogWarning("Echap non implemente...");
+        openMenu?.Invoke();
+        enabled = false;
     }
 
     public void OnVertical(InputAction.CallbackContext context)
@@ -36,7 +39,6 @@ public class PsyInputManager : AInputManager, ControlScheme.IPsyActions
 
     void Start() {
         Control.Psy.SetCallbacks(this);
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     new void OnEnable() {

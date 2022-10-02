@@ -123,6 +123,85 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &59334764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 33031658710702672, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1615197268}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 411
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 257.00024
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702673, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702674, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_Name
+      value: UI Intelligente
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702674, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1a7d07de14b537419c46355f752545c, type: 3}
 --- !u!1 &132513492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,6 +2035,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1464038217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 33031658710702674, guid: d1a7d07de14b537419c46355f752545c,
+    type: 3}
+  m_PrefabInstance: {fileID: 59334764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1607197911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,6 +2346,21 @@ MonoBehaviour:
   enableInput: 1
   _isUsingGamepad: 0
   moveFactor: 20
+  openMenu:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1464038217}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1615197267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2448,7 +2548,7 @@ MonoBehaviour:
   thirdPhrase: You have to reconciliate your inner <style="Emphasis">Yin</style>
     & <style="Emphasis">Yang</style>
   delay3: 3
-  delayBetweenTutoAndPlay: 2
+  delayBetweenTutoAndPlay: 0.5
   gameArea: {fileID: 132513492}
   tutorialElems:
   - {fileID: 539331589}

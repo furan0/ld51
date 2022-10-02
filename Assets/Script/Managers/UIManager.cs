@@ -22,6 +22,11 @@ public class UIManager : MonoBehaviour
 
     void OnEnable() {
         soundPlayer = GetComponent<CanPlaySound>();
+        Time.timeScale = 0.0f;
+    }
+
+    void OnDisable() {
+        Time.timeScale = 1.0f;
     }
 
     public void allerAlaScene(string nomDeScene){
@@ -52,5 +57,13 @@ public class UIManager : MonoBehaviour
 
     public void playClicSound() {
         soundPlayer.playSound(sonClicAlias);
+    }
+
+    public void closeMenu() {
+        playClicSound();
+        AInputManager inputManager = GameObject.FindGameObjectWithTag("GameController")?.GetComponent<AInputManager>();
+        if (inputManager != null)
+            inputManager.enabled = true;
+        gameObject.SetActive(false);
     }
 }
