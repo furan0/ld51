@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SceneDeTestALaCon.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/root.unity
     guid: 459b208e431dbb24ead7cd46b7fed1a2
   - enabled: 1

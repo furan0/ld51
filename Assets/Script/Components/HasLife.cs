@@ -8,10 +8,13 @@ public class HasLife : MonoBehaviour
 
     [SerializeField, Range(1, 10)] private int lifeMax = 3;
     [SerializeField] private int currentLife = -1; 
+    public int CurrentLife {
+        get {return currentLife;}
+    }
     public UnityEvent lifeEmpty;
     public UnityEvent lifeFull;
-    public UnityEvent lifeLost;
-    public UnityEvent lifeGained;
+    public UnityEvent<int> lifeLost;
+    public UnityEvent<int> lifeGained;
 
     // Start is called before the first frame update
     void Start()
@@ -36,9 +39,9 @@ public class HasLife : MonoBehaviour
         }
 
         if (delta < 0) {
-            lifeLost?.Invoke();
+            lifeLost?.Invoke(currentLife);
         } else if (delta > 0) {
-            lifeGained?.Invoke();
+            lifeGained?.Invoke(currentLife);
         }
     }
 }

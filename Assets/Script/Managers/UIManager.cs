@@ -23,7 +23,8 @@ public class UIManager : MonoBehaviour
 
     public void allerAlaScene(string nomDeScene){
         playClicSound();
-        StartCoroutine(waitBeforeSwitching(nomDeScene));
+        GameObject root = GameObject.FindGameObjectWithTag("Root");
+        root?.GetComponent<SceneLoader>()?.switchSceneAfterDelay(nomDeScene, waitBeforeSwitchingScene);
     }
 
     public void switchPanel(int numeroPanel){
@@ -44,12 +45,6 @@ public class UIManager : MonoBehaviour
 
     public void retourMenu() {
         allerAlaScene(menuName);
-    }
-
-    private IEnumerator waitBeforeSwitching(string nomDeScene) {
-        yield return new WaitForSeconds(waitBeforeSwitchingScene);
-
-        SceneManager.LoadScene(nomDeScene);
     }
 
     public void playClicSound() {

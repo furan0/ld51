@@ -15,8 +15,6 @@ public class MusicManager : MonoBehaviour
     }
     private E_Channel currentChannel = E_Channel.CHANNEL_1;
 
-    [SerializeField] string startMusic = "INTRO";
-
     [SerializeField] float defaultTransitionTime = 1.0f;
     private float currentTransitionTime = 0.0f;
     private float spentTransitionTime = 0.0f;
@@ -39,9 +37,6 @@ public class MusicManager : MonoBehaviour
 
         currentChannel = E_Channel.CHANNEL_1;
         currentTransitionTime = defaultTransitionTime;
-
-        // If any music registered, play start music
-        playMusic(startMusic, source1);
     }
 
     void Update() {
@@ -110,7 +105,24 @@ public class MusicManager : MonoBehaviour
         if (clip != null) {
             channel.volume = db.settings.MusicVolume;
             channel.clip = clip;
-            channel.PlayDelayed(delay);
+            channel.time = delay;
+            channel.Play();
+        }
+    }
+
+    public void updateVolume() {
+        // No need to update duringa transition
+        if (onGoingTransition)
+            return;
+
+        switch(currentChannel) {
+            case E_Channel.CHANNEL_1:
+                source1.volume = db.settings.MusicVolume;
+            break;
+
+            case E_Channel.CHANNEL_2:
+                source2.volume = db.settings.MusicVolume;
+            break;
         }
     }
 }

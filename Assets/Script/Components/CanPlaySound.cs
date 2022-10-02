@@ -15,7 +15,7 @@ public class CanPlaySound : MonoBehaviour
         if (source == null)
             source = GetComponent<AudioSource>();
 
-        GameObject controller = GameObject.FindGameObjectWithTag("GameController");
+        GameObject controller = GameObject.FindGameObjectWithTag("Root");
         soundDb = controller?.GetComponent<DatabaseManager>()?.soundDatabase;
         settings = controller?.GetComponent<DatabaseManager>()?.settings;
 

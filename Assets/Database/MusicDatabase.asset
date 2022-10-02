@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: MusicDatabase
   m_EditorClassIdentifier: 
   database:
-  - alias: MENU
+  - alias: Menu
     musics:
     - {fileID: 8300000, guid: ba3ff0efc29f9a34f943c51f32eaa93a, type: 3}
-  - alias: PSY
+  - alias: Psy
     musics:
     - {fileID: 8300000, guid: 663620ba7914b53488887da9469f6dc0, type: 3}
-  - alias: NRV
+  - alias: Pewpew
     musics:
     - {fileID: 8300000, guid: be3af5e7db5d7d5459dfdd7c23f3d806, type: 3}
     - {fileID: 8300000, guid: 8e025cc14dba0b64f981a6fbd2593f40, type: 3}
