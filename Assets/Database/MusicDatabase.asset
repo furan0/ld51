@@ -24,3 +24,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: be3af5e7db5d7d5459dfdd7c23f3d806, type: 3}
     - {fileID: 8300000, guid: 8e025cc14dba0b64f981a6fbd2593f40, type: 3}
     - {fileID: 8300000, guid: d84a7560c76b6de4f9599891830436a3, type: 3}
+  - alias: DEATH
+    musics:
+    - {fileID: 8300000, guid: 90a5061e06c33984b92be72d35ba1614, type: 3}

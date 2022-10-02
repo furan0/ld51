@@ -18,6 +18,11 @@ public class GameSettings : ScriptableObject
         get {return soundVolume;}
     }
 
+    [SerializeField, Range(0.5f, 2.0f), Tooltip("Mouse velocity")] protected float mouseVelocity;
+    public float MouseVelocity {
+        get {return mouseVelocity;}
+    }
+
     public void setMusicVolume(float volume) {
         if (volume > 1.0f) volume = 1.0f;
         if (volume < 0.0f) volume = 0.0f;
@@ -28,5 +33,11 @@ public class GameSettings : ScriptableObject
         if (volume > 1.0f) volume = 1.0f;
         if (volume < 0.0f) volume = 0.0f;
         soundVolume = volume;
+    }
+
+    public void setMouseVelocity(float velocity) {
+        if (velocity > 2.0f) velocity = 2.0f;
+        if (velocity < 0.5f) velocity = 0.5f;
+        mouseVelocity = velocity;
     }
 }
