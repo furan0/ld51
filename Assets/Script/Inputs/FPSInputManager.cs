@@ -57,7 +57,8 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
 
     void ControlScheme.IFPSActions.OnMenu(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        //TODO
+        Debug.LogWarning("Echap non implemente...");
     }
 
     void ControlScheme.IFPSActions.OnMove(InputAction.CallbackContext context)

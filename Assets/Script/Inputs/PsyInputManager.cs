@@ -18,7 +18,8 @@ public class PsyInputManager : AInputManager, ControlScheme.IPsyActions
 
     public void OnMenu(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        //TODO
+        Debug.LogWarning("Echap non implemente...");
     }
 
     public void OnVertical(InputAction.CallbackContext context)
@@ -45,14 +46,19 @@ public class PsyInputManager : AInputManager, ControlScheme.IPsyActions
     void Update() {
         //Yiiiiiin
         CanMoveClamped mover = manager.Yin.GetComponent<CanMoveClamped>();
-        Vector3 nextPosition = mover.Position;
-        nextPosition.x += valueHorizontal * Time.deltaTime * moveFactor;
-        mover.Position = nextPosition;
+        Vector3 nextPosition;
+        if(mover != null) {
+            nextPosition = mover.Position;
+            nextPosition.x += valueHorizontal * Time.deltaTime * moveFactor;
+            mover.Position = nextPosition;
+        }
 
         //Yaaaang
         mover = manager.Yang.GetComponent<CanMoveClamped>();
-        nextPosition = mover.Position;
-        nextPosition.y += valueVertical * Time.deltaTime * moveFactor;
-        mover.Position = nextPosition;
+        if(mover != null) {
+            nextPosition = mover.Position;
+            nextPosition.y += valueVertical * Time.deltaTime * moveFactor;
+            mover.Position = nextPosition;
+        }
     }
 }

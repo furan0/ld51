@@ -25,3 +25,6 @@ MonoBehaviour:
   - alias: SHOT_RAY
     fxs:
     - {fileID: 4823310796111697678, guid: ff0fab9ba04197e4782399ed50ef6c0e, type: 3}
+  - alias: SERENITY
+    fxs:
+    - {fileID: 8460789710833951245, guid: c49ac4b618d495c4ca9f03b6b47c93d7, type: 3}

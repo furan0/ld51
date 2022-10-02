@@ -20,4 +20,8 @@ public class PsyManager : MonoBehaviour
     {
         
     }
+
+    public void accouplementReussi() {
+        Debug.Log("Accouplement !");
+    }
 }

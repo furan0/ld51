@@ -20,7 +20,7 @@ public class CanDoAwesomeFX : MonoBehaviour
     {
         if (spawnPoint == null)
             spawnPoint = transform;
-        database = GameObject.FindGameObjectWithTag("GameController")?.GetComponent<DatabaseManager>()?.fxDatabase;
+        database = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>()?.fxDatabase;
         Assert.IsNotNull(database);
         ongoingFxs = new List<GameObject>();
     }

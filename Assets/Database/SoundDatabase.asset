@@ -32,3 +32,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 89a2eb20b9d3eb648ab313734b9b8220, type: 3}
     - {fileID: 8300000, guid: c63615e5c3a0a2c49a04ba6197f30904, type: 3}
     - {fileID: 8300000, guid: fc8ab9788044d6d4ba4e58a3938a6dc5, type: 3}
+  - alias: SERENITY
+    clips:
+    - {fileID: 8300000, guid: 3634b59ff4d6dd142b4ce7f066df68cd, type: 3}
