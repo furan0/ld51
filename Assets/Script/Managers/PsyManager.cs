@@ -23,7 +23,11 @@ public class PsyManager : MonoBehaviour
         Assert.IsNotNull(Yin);
         Assert.IsNotNull(Yang);
 
-        StartCoroutine(startTimerAndGameAfterALittleWhile());
+        ZenTuto tuto = GetComponent<ZenTuto>();
+        if (tuto != null)
+            tuto.startTuto();
+        else
+            startGame();
     }
 
     // Update is called once per frame
@@ -34,6 +38,10 @@ public class PsyManager : MonoBehaviour
 
     public void accouplementReussi() {
         StartCoroutine(waitForEndAccoluplement());
+    }
+
+    public void startGame() {
+        StartCoroutine(startTimerAndGameAfterALittleWhile());
     }
 
     public void changeMode() {

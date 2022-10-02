@@ -10,9 +10,13 @@ public class WriteText : MonoBehaviour
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] float timeBetweenText = 1.5f;
     [SerializeField] float timeBetweenCharacters = 0.2f;
-    private string currentText;
+    [SerializeField] string currentText;
     private bool isWriting = false;
     private PsycheDatabase db;
+    public bool AutoWrite {
+        get;
+        set;
+    }
 
     public UnityEvent characterWritten;
 
@@ -20,6 +24,7 @@ public class WriteText : MonoBehaviour
         if (text == null)
             text = GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(text);
+        AutoWrite = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -30,12 +35,12 @@ public class WriteText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isWriting && isActiveAndEnabled) {
+        if (!isWriting && AutoWrite && isActiveAndEnabled) {
             writeRandomText();
         }
     }
 
-    public void writeRandomText() {
+    public void writeRandomText() { 
         if (db == null) {
             Debug.LogWarning("No text DB found");
             return;
@@ -83,5 +88,12 @@ public class WriteText : MonoBehaviour
         
         yield return new WaitForSeconds(timeBetweenText);
         isWriting = false;
+    }
+
+    public void reset() {
+        StopAllCoroutines();
+        isWriting = false;
+        AutoWrite = false;
+        text.text = "";
     }
 }

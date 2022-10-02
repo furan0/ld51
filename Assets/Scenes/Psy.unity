@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &132513493
 Transform:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &144622988
 Transform:
   m_ObjectHideFlags: 0
@@ -312,6 +312,7 @@ MonoBehaviour:
   text: {fileID: 2125319193}
   timeBetweenText: 2.5
   timeBetweenCharacters: 0.05
+  currentText: 
   characterWritten:
     m_PersistentCalls:
       m_Calls:
@@ -408,7 +409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &410922988
 Transform:
   m_ObjectHideFlags: 0
@@ -617,7 +618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &539331590
 Transform:
   m_ObjectHideFlags: 0
@@ -1067,7 +1068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1013375811
 Transform:
   m_ObjectHideFlags: 0
@@ -1783,7 +1784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1438232611
 Transform:
   m_ObjectHideFlags: 0
@@ -1991,6 +1992,7 @@ GameObject:
   - component: {fileID: 1615197267}
   - component: {fileID: 1615197269}
   - component: {fileID: 1615197268}
+  - component: {fileID: 1615197270}
   m_Layer: 0
   m_Name: Manager
   m_TagString: GameController
@@ -2074,6 +2076,30 @@ MonoBehaviour:
       - m_Target: {fileID: 1074585769}
         m_TargetAssemblyTypeName: CanMoveClamped, Assembly-CSharp
         m_MethodName: set_IsEnabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 223792480}
+        m_TargetAssemblyTypeName: WriteText, Assembly-CSharp
+        m_MethodName: reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 223792480}
+        m_TargetAssemblyTypeName: WriteText, Assembly-CSharp
+        m_MethodName: set_AutoWrite
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2291,6 +2317,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 1615197268}
+--- !u!114 &1615197270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615197262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150d4d029d0c2b742a6fcfcf66d0a6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  writer: {fileID: 223792480}
+  initialDelay: 1
+  firstPhrase: Hello...<br>Ready for a new session ?
+  delay1: 4
+  secondPhrase: Let's start with some <style="Emphasis">meditation</style>
+  delay2: 4
+  thirdPhrase: You have to reconciliate your inner <style="Emphasis">Yin</style>
+    & <style="Emphasis">Yang</style>
+  delay3: 3
+  delayBetweenTutoAndPlay: 2
+  gameArea: {fileID: 132513492}
+  tutorialElems:
+  - {fileID: 539331589}
+  - {fileID: 144622987}
+  - {fileID: 1013375810}
+  - {fileID: 1438232610}
+  - {fileID: 410922987}
+  tutoFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615197265}
+        m_TargetAssemblyTypeName: PsyManager, Assembly-CSharp
+        m_MethodName: startGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1645632180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2737,9 +2807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem Ipsum Dolor
-
-    tyefsfefsffs'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
