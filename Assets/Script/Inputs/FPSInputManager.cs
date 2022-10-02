@@ -30,13 +30,16 @@ public class FPSInputManager : AInputManager, ControlScheme.IFPSActions
         Control.FPS.SetCallbacks(this);
     }
 
-    void OnEnable() {
+    new void OnEnable() {
+        base.OnEnable();
         switchScheme(E_InputScheme.FPS);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void OnDisable() {
+    new void OnDisable() {
+        base.OnDisable();
         Cursor.lockState = CursorLockMode.None;
+        Control.FPS.Disable();
     }
 
     void Update() {

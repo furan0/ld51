@@ -39,8 +39,14 @@ public class PsyInputManager : AInputManager, ControlScheme.IPsyActions
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void OnEnable() {
+    new void OnEnable() {
+        base.OnEnable();
         switchScheme(E_InputScheme.PSY);
+    }
+
+    new void OnDisable() {
+        base.OnDisable();
+        Control.Psy.Disable();
     }
 
     void FixedUpdate() {

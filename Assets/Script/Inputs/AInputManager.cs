@@ -46,6 +46,14 @@ public abstract class AInputManager : MonoBehaviour
         }
     }
 
+    protected void OnDisable() {
+        enableInput = false;
+    }
+
+    protected void OnEnable() {
+        enableInput = true;
+    }
+
     public void switchScheme(E_InputScheme newScheme) {
         switch (newScheme) {
             case E_InputScheme.UI:

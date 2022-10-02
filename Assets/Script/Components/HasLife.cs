@@ -16,8 +16,6 @@ public class HasLife : MonoBehaviour
     public UnityEvent<int> lifeLost;
     public UnityEvent<int> lifeGained;
 
-    private DatabaseManager db;
-
     // Start is called before the first frame update
     
 
@@ -25,12 +23,6 @@ public class HasLife : MonoBehaviour
     {
         if (currentLife == -1)
             currentLife = lifeMax;
-    }
-
-    void Start() {
-        db = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>();
-        if (db != null)
-            setLife(db.data.playerHealth);
     }
 
     public void changeLife(int delta) 
@@ -54,7 +46,6 @@ public class HasLife : MonoBehaviour
             lifeGained?.Invoke(currentLife);
         }
 
-        voidUpdateBd();
     }
 
     public void setLife(int life) {
@@ -62,27 +53,21 @@ public class HasLife : MonoBehaviour
             return;
 
         if (life < currentLife) {
-
-            lifeLost?.Invoke(life);
+            //lifeLost?.Invoke(life);
         } else {
-            lifeGained?.Invoke(life);
+            //lifeGained?.Invoke(life);
         }
+        lifeGained?.Invoke(life);
 
         currentLife = life;
         if (currentLife > lifeMax) {
             currentLife = lifeMax;
-            lifeFull?.Invoke();
+            //lifeFull?.Invoke();
         }
-        if (currentLife <= 0) {
+        if (currentLife < 0) {
             currentLife = 0;
-            lifeEmpty?.Invoke();
+            //lifeEmpty?.Invoke();
         }
 
-        voidUpdateBd();
-    }
-
-    private void voidUpdateBd() {
-        if (db != null)
-            db.data.playerHealth = currentLife;
     }
 }

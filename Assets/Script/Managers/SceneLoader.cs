@@ -22,6 +22,7 @@ public class SceneLoader : MonoBehaviour
         //SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         SceneManager.LoadScene(sceneName);
         currentSceneName = sceneName;
+        Time.timeScale = 1.0f; //Relaunch time if needed...
     }
 
     public void switchSceneAfterDelay(string sceneName, float delay) {

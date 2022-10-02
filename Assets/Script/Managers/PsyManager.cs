@@ -31,16 +31,11 @@ public class PsyManager : MonoBehaviour
         if ((tuto != null) && !db.data.tutoAlreadyPlayed) {
             db.data.tutoAlreadyPlayed = true;
             tuto.startTuto();
-        } else
+        } else {
             startGame();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void accouplementReussi() {
         StartCoroutine(waitForEndAccoluplement());
     }
