@@ -17,8 +17,11 @@ public class UIManager : MonoBehaviour
 
 
     void Start() {
-        soundPlayer = GetComponent<CanPlaySound>();
         switchPanel(activePanel);
+    }
+
+    void OnEnable() {
+        soundPlayer = GetComponent<CanPlaySound>();
     }
 
     public void allerAlaScene(string nomDeScene){

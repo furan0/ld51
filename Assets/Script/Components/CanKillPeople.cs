@@ -23,11 +23,13 @@ public class CanKillPeople : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Direction toward target
+        Vector3 dir = (other.transform.position - transform.position).normalized;
         //Check hit validity with a raycast
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, dir, out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.DrawRay(transform.position, dir * hit.distance, Color.yellow);
             Debug.Log("Hit touched something : " + hit.collider.gameObject.name);
 
             if (instaKill) {

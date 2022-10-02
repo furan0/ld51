@@ -24,6 +24,11 @@ public class NumberDisplayer : MonoBehaviour
     }
 
     public void updateDisplay(){
+        foreach (var item in item_list)
+        {
+            item.SetActive(false);
+        }
+
         for (int i = 0 ; (i <counter) && (i<item_list.Length); i++ ){
             item_list[i].SetActive(true);
         }

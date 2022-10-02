@@ -53,8 +53,8 @@ public class MainManager : MonoBehaviour
         if (!isDefeat) {
             //Debug.Log("Defeat !");
             isDefeat = true;
-            defeat.Invoke();
             Time.timeScale = 0;
+            defeat.Invoke();
         }
     }
 

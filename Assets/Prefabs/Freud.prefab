@@ -335,6 +335,30 @@ MonoBehaviour:
           m_StringArgument: hurt
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5859598599115636880}
+        m_TargetAssemblyTypeName: CanPlaySound, Assembly-CSharp
+        m_MethodName: playSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HIT_FREUD
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5859598599115636880}
+        m_TargetAssemblyTypeName: CanPlaySound, Assembly-CSharp
+        m_MethodName: playSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HIT_FREUD2
+          m_BoolArgument: 0
+        m_CallState: 2
   lifeGained:
     m_PersistentCalls:
       m_Calls: []
@@ -426,7 +450,19 @@ MonoBehaviour:
   fxAlias: SHOOT
   pewpewFired:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5859598599115636880}
+        m_TargetAssemblyTypeName: CanPlaySound, Assembly-CSharp
+        m_MethodName: playSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SHOT_FREUD
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &4775674998712543323
 AudioSource:
   m_ObjectHideFlags: 0
@@ -732,7 +768,7 @@ MonoBehaviour:
   finalDelay: 0.1
   autoDestructTime: 0.5
   fxAlias: HIT_FREUD
-  soundAlias: DEATH_FREUD
+  soundAlias: HIT_FREUD
 --- !u!1 &3197908156991180395
 GameObject:
   m_ObjectHideFlags: 0

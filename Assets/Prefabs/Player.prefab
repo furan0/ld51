@@ -98,6 +98,8 @@ GameObject:
   - component: {fileID: 6586724535655460332}
   - component: {fileID: 6586724535655460306}
   - component: {fileID: 1936410147}
+  - component: {fileID: 4162437008074663695}
+  - component: {fileID: 3717744732448918084}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -373,6 +375,76 @@ MonoBehaviour:
           m_StringArgument: SHOT_RAY
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4162437008074663695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6586724535655460331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f802dccc5d19c2f4c8a0454376a6159e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeMax: 5
+  currentLife: -1
+  lifeEmpty:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3717744732448918084}
+        m_TargetAssemblyTypeName: CanDie, Assembly-CSharp
+        m_MethodName: kill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lifeFull:
+    m_PersistentCalls:
+      m_Calls: []
+  lifeLost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6586724535655460333}
+        m_TargetAssemblyTypeName: CanPlaySound, Assembly-CSharp
+        m_MethodName: playSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HIT_PLAYER
+          m_BoolArgument: 0
+        m_CallState: 2
+  lifeGained:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3717744732448918084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6586724535655460331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5fa8dd6063502a4697a5d2340023d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlive: 1
+  fxAlias: DIE
+  objectKilledEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  killedFx:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6586724536810443494
 GameObject:
   m_ObjectHideFlags: 0

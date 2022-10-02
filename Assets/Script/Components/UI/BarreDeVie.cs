@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class BarreDeVie : MonoBehaviour
 {
-    
-
-    
-
     void Start()
     {
         NumberDisplayer nd = GetComponent<NumberDisplayer>();
@@ -15,19 +11,19 @@ public class BarreDeVie : MonoBehaviour
             
             MainManager mm = GameObject.FindGameObjectWithTag("GameController").GetComponent<MainManager>();
             if(mm == null){
-                print("Je n'ai pas accès au manager");
+                Debug.LogWarning("Je n'ai pas accès au manager");
             }
             if(mm.Player == null){
-                print("la tu cherches...");
+                Debug.LogWarning("la tu cherches...");
             }
-            if(mm.Player.GetComponent<HasLife>() == null){
-                print("Voyons..");
-            }
-            //mm.Player.GetComponent<HasLife>().lifeLost.AddListener(nd.setCounter);
-            //mm.Player.GetComponent<HasLife>().lifeGained.AddListener(nd.setCounter);
+            HasLife life = mm.Player.GetComponent<HasLife>();
+            life?.lifeLost.AddListener(nd.setCounter);
+            life?.lifeGained.AddListener(nd.setCounter);
+            if (life != null)
+                nd.setCounter(life.CurrentLife);
             
         }else{
-            print("Je n'ai pas de quoi afficher ma vie Connard.");
+            Debug.LogWarning("Je n'ai pas de quoi afficher ma vie Connard.");
         }
         
     }

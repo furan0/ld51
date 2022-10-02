@@ -15,7 +15,7 @@ MonoBehaviour:
   database:
   - alias: BUTTON_OK
     clips:
-    - {fileID: 8300000, guid: 48fda05a4fa4b2a46971af1725521c41, type: 3}
+    - {fileID: 8300000, guid: 7d7d02527a843274a8300fb570bc88a7, type: 3}
   - alias: WALK
     clips:
     - {fileID: 8300000, guid: 580bbe7244f05294fbca8c8c13dfd470, type: 3}
@@ -23,15 +23,27 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 6775ac96a4933134ab6300afb1c41d4a, type: 3}
   - alias: SHOT
     clips:
-    - {fileID: 8300000, guid: 079242041031dca4c8b45e113855ec32, type: 3}
-    - {fileID: 8300000, guid: a2fefcc45266fc54ab2d6b0a62068615, type: 3}
-    - {fileID: 8300000, guid: e8aacdf43c0907a4c845558242f03fe6, type: 3}
-    - {fileID: 8300000, guid: c31db8f60320b3b4c935f5e1f4a33138, type: 3}
     - {fileID: 8300000, guid: 3a4823e1ef4a82447ae7e173e2692824, type: 3}
-    - {fileID: 8300000, guid: fbdd9312838df064a9d5cea82e6c5e02, type: 3}
-    - {fileID: 8300000, guid: 89a2eb20b9d3eb648ab313734b9b8220, type: 3}
     - {fileID: 8300000, guid: c63615e5c3a0a2c49a04ba6197f30904, type: 3}
     - {fileID: 8300000, guid: fc8ab9788044d6d4ba4e58a3938a6dc5, type: 3}
   - alias: SERENITY
     clips:
     - {fileID: 8300000, guid: 3634b59ff4d6dd142b4ce7f066df68cd, type: 3}
+  - alias: HIT_FREUD
+    clips:
+    - {fileID: 8300000, guid: a16fd599991b0bf4cb13dcdcabdb10d6, type: 3}
+    - {fileID: 8300000, guid: e67b2c7de3310cb4cb25a094259c4c0e, type: 3}
+  - alias: TIMER
+    clips:
+    - {fileID: 8300000, guid: 5bcd5994aae1e4f42aa57d458dfd3186, type: 3}
+  - alias: HIT_FREUD2
+    clips:
+    - {fileID: 8300000, guid: cc6a2aaaa7381564ea5d90c714def507, type: 3}
+    - {fileID: 8300000, guid: 69bb945dbd429254b9b8710868072799, type: 3}
+  - alias: SHOT_FREUD
+    clips:
+    - {fileID: 8300000, guid: 82bac741551753a40b64fe42940ee683, type: 3}
+  - alias: HIT_PLAYER
+    clips:
+    - {fileID: 8300000, guid: cc6a2aaaa7381564ea5d90c714def507, type: 3}
+    - {fileID: 8300000, guid: 69bb945dbd429254b9b8710868072799, type: 3}
