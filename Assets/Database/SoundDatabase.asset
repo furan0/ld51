@@ -70,3 +70,6 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 6e8bbf5aac9efbe419957943ca35df70, type: 3}
     - {fileID: 8300000, guid: c252e6eb01de6d84ab5f03db2ed9582c, type: 3}
+  - alias: NRV
+    clips:
+    - {fileID: 8300000, guid: 96aba9098bb1d6a4387122f16ac60e5f, type: 3}

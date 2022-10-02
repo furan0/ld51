@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 718094373}
   - component: {fileID: 718094375}
   - component: {fileID: 718094374}
+  - component: {fileID: 718094376}
   m_Layer: 0
   m_Name: Managers
   m_TagString: GameController
@@ -795,6 +796,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: TRANSITION
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 718094376}
+        m_TargetAssemblyTypeName: EventAfterDelay, Assembly-CSharp
+        m_MethodName: doDelay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   isDefeat: 0
@@ -1020,6 +1033,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 0}
+--- !u!114 &718094376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718094367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc4b7851c163fb4e9a451ab6fa7847d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.3
+  eventFired:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 718094375}
+        m_TargetAssemblyTypeName: CanPlaySound, Assembly-CSharp
+        m_MethodName: playSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TRANSITION
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &748575521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3014,6 +3055,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI Intelligente
+      objectReference: {fileID: 0}
+    - target: {fileID: 33031658710702674, guid: d1a7d07de14b537419c46355f752545c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a7d07de14b537419c46355f752545c, type: 3}
