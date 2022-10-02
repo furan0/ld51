@@ -23,16 +23,11 @@ public class MusicManager : MonoBehaviour
         get {return onGoingTransition;}
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Awake() {
         db = GetComponent<DatabaseManager>();
         Assert.IsNotNull(db);
 
-        source1.volume = db.settings.MusicVolume;
         source1.loop = true;
-        source2.volume = 0.0f;
         source2.loop = true;
 
         currentChannel = E_Channel.CHANNEL_1;

@@ -8,12 +8,18 @@ public class CanMoveClamped : MonoBehaviour
     [SerializeField] Transform maxTransform;
     [SerializeField] Vector3 minClamp;
     [SerializeField] Transform minTransform;
+    protected Rigidbody rb;
 
     public Vector3 Position {
         get { return transform.position;}
         set { checkAndSetPos(value);}
 
     }
+
+    void Awake() {
+        rb = GetComponent<Rigidbody>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +49,10 @@ public class CanMoveClamped : MonoBehaviour
         if (pos.z < minClamp.z)
             pos.z = minClamp.z;
 
-        transform.position = pos;
+        if (rb == null)
+            transform.position = pos;
+        else
+            rb.MovePosition(pos);
+        
     }
 }
