@@ -17,7 +17,9 @@ public class HasLife : MonoBehaviour
     public UnityEvent<int> lifeGained;
 
     // Start is called before the first frame update
-    void Start()
+    
+
+    void Awake()
     {
         if (currentLife == -1)
             currentLife = lifeMax;
