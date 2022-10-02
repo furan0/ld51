@@ -145,17 +145,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.2228761
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.50026655
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.5172195
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
@@ -165,17 +165,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
@@ -202,7 +202,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fenetre Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2502203975881118265, guid: 2132505793c2a924480bfd1fcde18a2b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695666576454475813, guid: 2132505793c2a924480bfd1fcde18a2b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051415255134806348, guid: 2132505793c2a924480bfd1fcde18a2b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091094862930139297, guid: 2132505793c2a924480bfd1fcde18a2b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5716681864270162303, guid: 2132505793c2a924480bfd1fcde18a2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2132505793c2a924480bfd1fcde18a2b, type: 3}
 --- !u!4 &1226905730276579899 stripped
 Transform:
