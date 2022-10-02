@@ -366,6 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1413845398}
   - component: {fileID: 1413845397}
+  - component: {fileID: 1413845399}
   m_Layer: 0
   m_Name: musicLoader
   m_TagString: Untagged
@@ -386,6 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicName: Menu
+  transition: 0
 --- !u!4 &1413845398
 Transform:
   m_ObjectHideFlags: 0
@@ -401,6 +403,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1413845399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413845396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebd71de7f122ab4b9d15f47b9b6419e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2097287308
 GameObject:
   m_ObjectHideFlags: 0
