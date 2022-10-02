@@ -9,15 +9,22 @@ public class BarreDeVie : MonoBehaviour
         NumberDisplayer nd = GetComponent<NumberDisplayer>();
         if(nd != null){
             
-            MainManager mm = GameObject.FindGameObjectWithTag("GameController").GetComponent<MainManager>();
-            if(mm == null){
-                Debug.LogWarning("Je n'ai pas accès au manager");
+            GameObject controller = GameObject.FindGameObjectWithTag("GameController");
+            HasLife life;
+            if (controller?.GetComponent<MainManager>() !=  null) {
+                //FPS mode
+                MainManager mm = controller.GetComponent<MainManager>();
+                life = mm.Player.GetComponent<HasLife>();
+            }
+            else if (controller?.GetComponent<PsyManager>() !=  null) {
+                //ZEN mode
+                PsyManager mm = controller.GetComponent<PsyManager>();
+                life = mm.GetComponent<HasLife>();
+            } else {
+                Debug.LogWarning("No manager found");
                 return;
             }
-            if(mm.Player == null){
-                Debug.LogWarning("la tu cherches...");
-            }
-            HasLife life = mm.Player.GetComponent<HasLife>();
+            
             life?.lifeLost.AddListener(nd.setCounter);
             life?.lifeGained.AddListener(nd.setCounter);
             if (life != null)

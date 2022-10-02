@@ -1345,6 +1345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6763464108786986631}
+  - component: {fileID: 6640054749936096851}
   m_Layer: 0
   m_Name: DisplayerTemps
   m_TagString: Untagged
@@ -1368,6 +1369,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6640054749936096851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763464108786986744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc4b7851c163fb4e9a451ab6fa7847d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 1
+  eventFired:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 217970454833685264}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &6763464108792649501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,6 +2271,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34fee499ad4c82340aeb931f552538ec, type: 3}
+--- !u!1 &217970454833685264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 217970453785793663, guid: 34fee499ad4c82340aeb931f552538ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1183496047}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &217970454833685271 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 217970453785793656, guid: 34fee499ad4c82340aeb931f552538ec,
