@@ -69,4 +69,11 @@ public class PsyInputManager : AInputManager, ControlScheme.IPsyActions
             mover.Position = nextPosition;
         }
     }
+
+    public void OnSkip(InputAction.CallbackContext context)
+    {
+        ZenTuto tuto = GetComponent<ZenTuto>();
+        if (tuto != null)
+            tuto.skip();
+    }
 }

@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce027ab455e475499e1569136be10d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 3
-  damageFalloff: 0.05
+  baseDamage: 1
+  damageFalloff: 0
   instaKill: 0
   raycastLayer:
   - Default

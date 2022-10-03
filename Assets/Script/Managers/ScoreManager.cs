@@ -36,6 +36,7 @@ public class ScoreManager : MonoBehaviour
         obj.GetComponent<CanDie>()?.objectKilledEvent.AddListener(addKill);
     }
 
+
     public int getScore() {
         return data.score;
     }
@@ -44,7 +45,7 @@ public class ScoreManager : MonoBehaviour
         return specialMode;
     }
 
-    public int getHighScore() {
+    private int getHighScore() {
         currentHighScore = PlayerPrefs.GetInt("score");
         return currentHighScore;
     }

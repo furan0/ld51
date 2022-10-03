@@ -50,6 +50,7 @@ public class WriteText : MonoBehaviour
     }
 
     public void writeText(string text) {
+        StopAllCoroutines();
         currentText = text;
         isWriting = true;
         StartCoroutine(textWriter());

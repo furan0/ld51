@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e8a04886c81274ba29390bc24dc4ff, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  initialLife: 5
-  playerHealth: 6
+  initialLife: 3
+  playerHealth: 7
   tutoAlreadyPlayed: 1
   firstTimeInFPS: 0
-  score: 5112
+  nbTimeInFPS: 1
+  score: 400
+  initialPosition: {x: -16, y: 0, z: -20}
+  lastKilledPosition: {x: 0, y: 0, z: 0}

@@ -18,32 +18,57 @@ public class ZenTuto : MonoBehaviour
 
     [SerializeField] GameObject gameArea;
     [SerializeField] GameObject [] tutorialElems;
+    private bool skipWait = false;
+    private bool doWait = false;
 
     public UnityEvent tutoFinished;
 
     public void startTuto() {
         Assert.IsNotNull(writer);
+        doWait = false;
+        skipWait = false;
         StartCoroutine(tutoing());
     }
 
     private IEnumerator tutoing() {
-        yield return new WaitForSeconds(initialDelay);
+        yield return StartCoroutine(doCountdown(initialDelay));
         writer.writeText(firstPhrase);
 
-        yield return new WaitForSeconds(delay1);
+        yield return StartCoroutine(doCountdown(delay1));
         writer.writeText(secondPhrase);
 
-        yield return new WaitForSeconds(delay2);
+        yield return StartCoroutine(doCountdown(delay2));
         writer.writeText(thirdPhrase);
 
-        yield return new WaitForSeconds(delay3);
+        yield return StartCoroutine(doCountdown(delay3));
         gameArea.SetActive(true);
         foreach (GameObject item in tutorialElems)
         {
             item.SetActive(true);
         }
 
-        yield return new WaitForSeconds(delayBetweenTutoAndPlay);
+        yield return StartCoroutine(doCountdown(delayBetweenTutoAndPlay));
         tutoFinished?.Invoke();
+    }
+
+    public void skip() {
+        if (doWait)
+            skipWait = true;
+    }
+
+    private IEnumerator doCountdown(float delay) {
+        doWait = true;
+        float timeToWait = Time.time + delay;
+        while(Time.time < timeToWait)
+        {
+            if(skipWait)
+            {
+                skipWait = false;
+                doWait = false;
+                yield break ;
+            }
+            yield return null ;
+        }
+        doWait = false;
     }
 }

@@ -275,6 +275,15 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""9e713485-3e75-40b4-84a6-8ce71cdb9a0d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -574,6 +583,83 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                     ""action"": ""Horizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25a1200a-ac81-42ea-905c-113b608a889d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""354657d8-14af-4163-ac5b-1a45e812b39c"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60831cb0-2442-44f2-8d58-c77d949b2f96"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bdfcc245-d3e9-4940-b3fe-86c2e3f005e5"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55f4adaa-3229-4ad9-8857-a01c9ba46eca"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd383e5f-295e-49d6-9a83-426ead02d199"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5b64bb9-8b0f-4f81-a698-a3fac330c701"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -893,6 +979,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
         m_Psy_Menu = m_Psy.FindAction("Menu", throwIfNotFound: true);
         m_Psy_Vertical = m_Psy.FindAction("Vertical", throwIfNotFound: true);
         m_Psy_Horizontal = m_Psy.FindAction("Horizontal", throwIfNotFound: true);
+        m_Psy_Skip = m_Psy.FindAction("Skip", throwIfNotFound: true);
         // FPS
         m_FPS = asset.FindActionMap("FPS", throwIfNotFound: true);
         m_FPS_Menu = m_FPS.FindAction("Menu", throwIfNotFound: true);
@@ -1010,6 +1097,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
     private readonly InputAction m_Psy_Menu;
     private readonly InputAction m_Psy_Vertical;
     private readonly InputAction m_Psy_Horizontal;
+    private readonly InputAction m_Psy_Skip;
     public struct PsyActions
     {
         private @ControlScheme m_Wrapper;
@@ -1017,6 +1105,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
         public InputAction @Menu => m_Wrapper.m_Psy_Menu;
         public InputAction @Vertical => m_Wrapper.m_Psy_Vertical;
         public InputAction @Horizontal => m_Wrapper.m_Psy_Horizontal;
+        public InputAction @Skip => m_Wrapper.m_Psy_Skip;
         public InputActionMap Get() { return m_Wrapper.m_Psy; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1035,6 +1124,9 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 @Horizontal.started -= m_Wrapper.m_PsyActionsCallbackInterface.OnHorizontal;
                 @Horizontal.performed -= m_Wrapper.m_PsyActionsCallbackInterface.OnHorizontal;
                 @Horizontal.canceled -= m_Wrapper.m_PsyActionsCallbackInterface.OnHorizontal;
+                @Skip.started -= m_Wrapper.m_PsyActionsCallbackInterface.OnSkip;
+                @Skip.performed -= m_Wrapper.m_PsyActionsCallbackInterface.OnSkip;
+                @Skip.canceled -= m_Wrapper.m_PsyActionsCallbackInterface.OnSkip;
             }
             m_Wrapper.m_PsyActionsCallbackInterface = instance;
             if (instance != null)
@@ -1048,6 +1140,9 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 @Horizontal.started += instance.OnHorizontal;
                 @Horizontal.performed += instance.OnHorizontal;
                 @Horizontal.canceled += instance.OnHorizontal;
+                @Skip.started += instance.OnSkip;
+                @Skip.performed += instance.OnSkip;
+                @Skip.canceled += instance.OnSkip;
             }
         }
     }
@@ -1138,6 +1233,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
         void OnMenu(InputAction.CallbackContext context);
         void OnVertical(InputAction.CallbackContext context);
         void OnHorizontal(InputAction.CallbackContext context);
+        void OnSkip(InputAction.CallbackContext context);
     }
     public interface IFPSActions
     {

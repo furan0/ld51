@@ -13,11 +13,14 @@ public class PlayerData : ScriptableObject
     public bool firstTimeInFPS = true;
     public int nbTimeInFPS = 0;
     public int score = 0;
+    [SerializeField] private Vector3 initialPosition = Vector3.zero;
+    public Vector3 lastKilledPosition = Vector3.zero;
 
     public void reset() {
         playerHealth = initialLife;
         tutoAlreadyPlayed = false;
         score = 0;
         nbTimeInFPS = 0;
+        lastKilledPosition = initialPosition;
     }
 }
