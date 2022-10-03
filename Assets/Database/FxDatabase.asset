@@ -22,9 +22,6 @@ MonoBehaviour:
   - alias: HIT_FREUD
     fxs:
     - {fileID: 7188363336166054789, guid: b5dd5863031447543afefb263083c563, type: 3}
-  - alias: SHOT_RAY
-    fxs:
-    - {fileID: 3511777299450802570, guid: 5628967b084fb524890d03d443ba5740, type: 3}
   - alias: SERENITY
     fxs:
     - {fileID: 8460789710833951245, guid: c49ac4b618d495c4ca9f03b6b47c93d7, type: 3}

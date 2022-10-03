@@ -27,6 +27,8 @@ public class CanDoAwesomeFX : MonoBehaviour
 
     private void spawnFx(GameObject fx_, Vector3 spawnPoint_, Vector3 dir_, float duration_)
     {
+        if (fx_ == null)
+            return;
         GameObject obj = (keepAsparent)? Instantiate(fx_, spawnPoint_, Quaternion.Euler(dir_), transform) : Instantiate(fx_, spawnPoint_, Quaternion.Euler(dir_));
 
         //obj.transform.eulerAngles = dir_;
@@ -34,8 +36,10 @@ public class CanDoAwesomeFX : MonoBehaviour
     }
 
     IEnumerator spawnAfterDelay(GameObject fx_, Vector3 spawnPoint_, Vector3 dir_, float duration_, float delay_) {
-        yield return new WaitForSeconds(delay_);
-        spawnFx(fx_, spawnPoint_, dir_, duration_);
+        if (fx_ != null) {
+            yield return new WaitForSeconds(delay_);
+            spawnFx(fx_, spawnPoint_, dir_, duration_);
+        }
     }
 
     public void stopOngoingFxs() {
