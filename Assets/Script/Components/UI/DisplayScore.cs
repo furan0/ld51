@@ -9,6 +9,7 @@ public class DisplayScore : MonoBehaviour
     public TextMeshProUGUI textScore;
     public GameObject prefabAddScore;
     public float delayBeforeDestroyingAdd = 0.3f;
+    public bool displayBonus = true;
     Animator anim;
     ScoreManager manager;
 
@@ -29,7 +30,7 @@ public class DisplayScore : MonoBehaviour
 
     public void updateScore(int scoreAdded, bool bonus) {
         textScore.text = manager.getScore().ToString();
-        anim?.SetBool("bonus", bonus);
+        anim?.SetBool("bonus", bonus && displayBonus);
 
         if (scoreAdded > 0) {
             anim?.SetTrigger("new");

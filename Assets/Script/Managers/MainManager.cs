@@ -42,6 +42,8 @@ public class MainManager : MonoBehaviour
                 data.firstTimeInFPS = false;
             }
             data.nbTimeInFPS++;
+
+            player.transform.position = data.lastKilledPosition;
         }
 
 
@@ -65,6 +67,9 @@ public class MainManager : MonoBehaviour
             //Debug.Log("Defeat !");
             isDefeat = true;
             Time.timeScale = 0;
+            PlayerData data = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>()?.data;
+            if (data != null)
+                data.lastKilledPosition = player.transform.position;
             defeat.Invoke();
         }
     }

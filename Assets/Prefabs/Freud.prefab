@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f802dccc5d19c2f4c8a0454376a6159e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeMax: 5
+  lifeMax: 3
   currentLife: -1
   lifeEmpty:
     m_PersistentCalls:
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleProbability: 0.15
-  detectionRange: 15
+  detectionRange: 17
   minTimeInIdle: 0.2
   maxDeviationAngle: 25
   minWalkTime: 0.5
