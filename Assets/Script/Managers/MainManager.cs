@@ -67,9 +67,6 @@ public class MainManager : MonoBehaviour
             //Debug.Log("Defeat !");
             isDefeat = true;
             Time.timeScale = 0;
-            PlayerData data = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>()?.data;
-            if (data != null)
-                data.lastKilledPosition = player.transform.position;
             defeat.Invoke();
         }
     }
@@ -87,7 +84,10 @@ public class MainManager : MonoBehaviour
     }
 
     public void changeMode() {
-        Debug.Log("Mode switcheing to ZEN");
+        Debug.Log("Mode switching to ZEN");
+        PlayerData data = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>()?.data;
+            if (data != null)
+                data.lastKilledPosition = player.transform.position;
         modeSwitch.Invoke();
         //change scene after a while
         GameObject.FindGameObjectWithTag("Root")?.GetComponent<SceneLoader>()?.switchSceneAfterDelay("Psy", delayBeforeSwitchingScene);
