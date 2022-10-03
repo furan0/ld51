@@ -15,7 +15,7 @@ MonoBehaviour:
   initialLife: 3
   playerHealth: 3
   tutoAlreadyPlayed: 0
-  firstTimeInFPS: 0
+  firstTimeInFPS: 1
   nbTimeInFPS: 0
   score: 0
   initialPosition: {x: -16, y: 0, z: -20}
