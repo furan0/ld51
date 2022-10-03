@@ -833,7 +833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581010713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.66, y: 4.96, z: 0}
+  m_LocalPosition: {x: 10.96, y: 0.2, z: 0}
   m_LocalScale: {x: 5.105835, y: 5.95026, z: 4.05}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2672,6 +2672,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1615197269}
+        m_TargetAssemblyTypeName: CanPlaySound, Assembly-CSharp
+        m_MethodName: playSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: NRV2
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1615197266
