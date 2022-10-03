@@ -91,9 +91,17 @@ MonoBehaviour:
   baseDamage: 1
   damageFalloff: 0
   instaKill: 0
+  raycastLayer:
+  - Default
+  - Player
   selfDestruct: 1
   selfDestructDelay: 2
   isDestroyedOnHit: 1
+  fxAliasHit: 
+  fxAliasMiss: 
+  hitSomething:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &3894551456048049967
 PrefabInstance:
   m_ObjectHideFlags: 0

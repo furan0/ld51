@@ -76,3 +76,6 @@ MonoBehaviour:
   - alias: NRV2
     clips:
     - {fileID: 8300000, guid: 787a74a97477afe418560d19d0545972, type: 3}
+  - alias: CREDIT
+    clips:
+    - {fileID: 8300000, guid: 4ee04f0f80d08bb42807128ca2365bf4, type: 3}

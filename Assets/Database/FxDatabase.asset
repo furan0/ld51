@@ -28,3 +28,6 @@ MonoBehaviour:
   - alias: SERENITY
     fxs:
     - {fileID: 8460789710833951245, guid: c49ac4b618d495c4ca9f03b6b47c93d7, type: 3}
+  - alias: HIT_WALL
+    fxs:
+    - {fileID: 3581162499825136674, guid: f834ba88888036544abd04e55c6a7b69, type: 3}

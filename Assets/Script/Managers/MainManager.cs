@@ -36,10 +36,14 @@ public class MainManager : MonoBehaviour
         });
 
         PlayerData data = GameObject.FindGameObjectWithTag("Root")?.GetComponent<DatabaseManager>()?.data;
-        if ((data != null) && data.firstTimeInFPS) {
-            delayBeforeEverythingStart = delayBeforeEverythingStartFirsTime;
-            data.firstTimeInFPS = false;
+        if (data != null) {
+            if (data.firstTimeInFPS) {
+                delayBeforeEverythingStart = delayBeforeEverythingStartFirsTime;
+                data.firstTimeInFPS = false;
+            }
+            data.nbTimeInFPS++;
         }
+
 
         StartCoroutine(startTimerAndGameAfterALittleWhile());
     }

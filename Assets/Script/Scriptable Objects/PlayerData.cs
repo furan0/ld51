@@ -11,11 +11,13 @@ public class PlayerData : ScriptableObject
     public int playerHealth = 5;
     public bool tutoAlreadyPlayed = false;
     public bool firstTimeInFPS = true;
+    public int nbTimeInFPS = 0;
     public int score = 0;
 
     public void reset() {
         playerHealth = initialLife;
         tutoAlreadyPlayed = false;
         score = 0;
+        nbTimeInFPS = 0;
     }
 }

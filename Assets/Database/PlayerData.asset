@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   initialLife: 5
-  playerHealth: 7
-  tutoAlreadyPlayed: 0
+  playerHealth: 6
+  tutoAlreadyPlayed: 1
   firstTimeInFPS: 0
   score: 5112

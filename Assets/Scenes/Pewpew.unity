@@ -10046,5 +10046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sol
       objectReference: {fileID: 0}
+    - target: {fileID: 7328197567426054628, guid: 63f26fd68c6fd654db3500b7241b183f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63f26fd68c6fd654db3500b7241b183f, type: 3}
