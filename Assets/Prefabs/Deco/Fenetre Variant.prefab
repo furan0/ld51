@@ -130,32 +130,32 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.01
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.50026655
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
@@ -202,6 +202,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fenetre Variant
       objectReference: {fileID: 0}
+    - target: {fileID: -113181020801827196, guid: 2132505793c2a924480bfd1fcde18a2b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8caf4495969af6641b476b8b85465a6e, type: 2}
+    - target: {fileID: 1066910053003865102, guid: 2132505793c2a924480bfd1fcde18a2b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 24f25401b93d1d747a957820993f156a, type: 2}
     - target: {fileID: 2502203975881118265, guid: 2132505793c2a924480bfd1fcde18a2b,
         type: 3}
       propertyPath: m_StaticEditorFlags
