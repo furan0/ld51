@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialLife: 5
   playerHealth: 7
-  tutoAlreadyPlayed: 1
-  score: 4892
+  tutoAlreadyPlayed: 0
+  firstTimeInFPS: 0
+  score: 5112

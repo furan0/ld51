@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -835,6 +835,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d20ce6e1d76fbb4691a82f6be7d5e46, type: 3}
+--- !u!1 &659452895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 395232873, guid: 9d20ce6e1d76fbb4691a82f6be7d5e46,
+    type: 3}
+  m_PrefabInstance: {fileID: 659452894}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &659452896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 747358929251978767, guid: 9d20ce6e1d76fbb4691a82f6be7d5e46,
+    type: 3}
+  m_PrefabInstance: {fileID: 659452894}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &712156230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,6 +2724,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 659452896}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 659452895}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   lifeLost:
     m_PersistentCalls:
       m_Calls:
@@ -2719,6 +2755,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
         m_MethodName: lifeNotFull
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 659452896}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 659452895}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2758,6 +2818,9 @@ MonoBehaviour:
   meditationPoint: 20
   meditationPointBONUS: 100
   changeScore:
+    m_PersistentCalls:
+      m_Calls: []
+  newHighScore:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1642212054 stripped
