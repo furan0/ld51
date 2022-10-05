@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   initialLife: 3
-  playerHealth: 3
-  tutoAlreadyPlayed: 0
-  firstTimeInFPS: 1
-  nbTimeInFPS: 0
-  score: 0
+  playerHealth: 5
+  tutoAlreadyPlayed: 1
+  firstTimeInFPS: 0
+  nbTimeInFPS: 2
+  score: 2000
   initialPosition: {x: -16, y: 0, z: -20}
-  lastKilledPosition: {x: -16, y: 0, z: -20}
+  lastKilledPosition: {x: -0.71236086, y: 0.000002220273, z: -8.904115}

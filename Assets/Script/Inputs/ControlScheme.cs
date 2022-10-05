@@ -930,7 +930,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                     ""id"": ""a862413c-d47a-4b29-8273-a661cf436f80"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
+                    ""processors"": ""StickDeadzone,ScaleVector2(x=20,y=20)"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,

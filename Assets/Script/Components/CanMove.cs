@@ -117,13 +117,15 @@ public class CanMove : DisbaledOnDeath
             currentSpeed = Mathf.Sqrt(Mathf.Lerp(currentSpeed, desiredSpeedMultiplicator, acceleration));
         Vector3 deltaPos = direction.normalized * Mathf.Sqrt(currentSpeed)*desiredSped * Time.fixedDeltaTime;
         if (deltaPos.magnitude >=0.001f) {
-            rb.MovePosition( transform.position + deltaPos);
+            //rb.MovePosition( transform.position + deltaPos);
+            rb.velocity = deltaPos;
         } else if (isUsingNavAgent) { 
             //currentSpeed = agent.velocity.magnitude;
             //isMoving = agent.walk;
             //TODO
         } else {
             isMoving = false;
+            rb.velocity = Vector3.zero;
         }
         
         
