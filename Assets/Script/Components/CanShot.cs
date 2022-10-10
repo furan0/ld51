@@ -29,6 +29,10 @@ public class CanShot : MonoBehaviour
     }
 
     public void shoot(Quaternion dir_) {
+        //Return if disabled 
+        if(!isActiveAndEnabled)
+            return;
+
         dir_.Normalize();
         Vector3 pos = bulletSpawner.position;
         GameObject bullet = Instantiate(bulletPrefab[prefabNbUsed], pos, dir_);
